@@ -6,10 +6,10 @@
   "scripts": {
     "clean:build": "rm -rf public/scripts/* & rm -rf public/styles/* & rm -rf public/views/* & rm -rf public/data/* & rm -rf public/assets/*",
     "browsersync": "browser-sync start --server public --files './' --port 3000 --no-ui",
-    "js": "watchify -d -t babelify -t aliasify -t stringify app/scripts/app.js -o public/scripts/bundle.js",
+    "js:dev": "watchify -d -t babelify -t stringify app/scripts/app.js -o public/scripts/bundle.js",
+    "js:build": "browserify -t babelify -t stringify app/scripts/app.js | uglifyjs -o public/scripts/bundle.js",
     "styles": "node-sass --output-style compact -w app/styles -o public/styles",
-    "start": "npm run styles & npm run js & npm run browsersync ",
-    "build": "npm run styles & npm run js & npm run browsersync"
+    "start": "npm run styles & npm run js:dev & npm run browsersync "
   },
   "repository": {
     "type": "git",
@@ -21,20 +21,20 @@
     "url": "https://github.com/leobrossault/portfolio-clemence/issues"
   },
   "homepage": "https://github.com/leobrossault/portfolio-clemence#readme",
-  "dependencies": {
-    "aliasify": "^1.9.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.4.5",
-    "babel-preset-es2015": "^6.3.13",
-    "browser-sync": "^2.11.1",
-    "browserify": "^13.0.0",
-    "node-sass": "^3.4.2",
-    "stringify": "^3.2.0",
-    "uglifyjs": "^2.4.10",
-    "vue": "^1.0.16",
-    "watch": "^0.17.1",
-    "watchify": "^3.7.0"
-  },
   "devDependencies": {
-    "babelify": "^7.2.0"
+    "aliasify": "*",
+    "babel-plugin-transform-es2015-modules-commonjs": "*",
+    "babel-preset-es2015": "*",
+    "babelify": "6.4.0",
+    "browser-sync": "*",
+    "browserify": "*",
+    "stringify": "*",
+    "uglifyjs": "*",
+    "watch": "*",
+    "watchify": "*",
+    "node-sass": "*"
+  },
+  "aliasify": {
+    "aliases": {}
   }
 }
