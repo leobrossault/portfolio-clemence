@@ -78,5 +78,3 @@ p, h1 { margin: 0; }
 #header.active .open-menu { opacity: 1; transform: translateY(0); transition: all 0.4s ease-in-out; }
 
 #header.active .open-menu ul li a { transform: translateY(0); opacity: 1; }
-
-.home { background: red; }

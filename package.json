@@ -28,11 +28,13 @@
     "babelify": "6.4.0",
     "browser-sync": "*",
     "browserify": "*",
+    "node-sass": "*",
     "stringify": "*",
     "uglifyjs": "*",
+    "vue": "^1.0.16",
+    "vue-router": "^0.7.10",
     "watch": "*",
-    "watchify": "*",
-    "node-sass": "*"
+    "watchify": "*"
   },
   "aliasify": {
     "aliases": {}
