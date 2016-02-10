@@ -1,6 +1,8 @@
+/* FONTS */
+/* COLORS */
 * { box-sizing: border-box; }
 
-body { margin: 0; height: 100%; width: 100%; }
+html, body, #app { margin: 0; height: 100%; width: 100%; }
 
 p, h1 { margin: 0; }
 
@@ -41,7 +43,7 @@ p, h1 { margin: 0; }
 
 #header .close-menu > div h1, #header .close-menu > div p { font-weight: 700; }
 
-#header .close-menu > div#logo a { max-width: 150px; min-width: 50px; width: 30%; display: block; }
+#header .close-menu > div#logo a { max-width: 150px; min-width: 50px; width: 30%; display: block; margin: auto; }
 
 #header .close-menu > div#logo a img { max-width: 100%; }
 
@@ -65,7 +67,15 @@ p, h1 { margin: 0; }
 
 #header .open-menu ul li:last-child { margin: 0; }
 
-#header .open-menu ul li a { text-decoration: none; color: #000; font-family: "sofia-pro", sans-serif; font-size: 20px; font-weight: 700; transform: translateY(-15px); opacity: 0; display: block; }
+#header .open-menu ul li a { text-decoration: none; color: #000; font-family: "sofia-pro", sans-serif; font-size: 20px; font-weight: 700; transform: translateY(-15px); opacity: 0; display: block; position: relative; }
+
+#header .open-menu ul li a::before, #header .open-menu ul li a::after { content: ""; position: absolute; height: 3px; width: 50%; max-width: 0; transition: all 0.4s ease-in-out; bottom: -5px; background: #000; }
+
+#header .open-menu ul li a::before { right: 50%; }
+
+#header .open-menu ul li a::after { left: 50%; }
+
+#header .open-menu ul li a:hover::before, #header .open-menu ul li a:hover::after, #header .open-menu ul li a.active::before, #header .open-menu ul li a.active::after { max-width: 50%; }
 
 #header .open-menu ul li:nth-child(1) a { transition: all 0.4s 0.2s ease-in-out; }
 
@@ -79,4 +89,64 @@ p, h1 { margin: 0; }
 
 #header.active .open-menu ul li a { transform: translateY(0); opacity: 1; }
 
-.home { background: red; }
+.home { height: 80%; }
+
+.home .diapo-container { position: relative; width: 100%; height: 100%; overflow: hidden; }
+
+.home .diapo-container .diapo-overflow { position: absolute; left: 0; top: 0; height: 100%; }
+
+.home .diapo-container .diapo-overflow .project-home { display: inline-block; vertical-align: middle; height: 100%; position: relative; top: 15px; }
+
+.home .diapo-container .diapo-overflow .project-home.prev-current, .home .diapo-container .diapo-overflow .project-home.next-current { cursor: pointer; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center { width: 100%; height: 70%; margin: auto; position: relative; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center .borders { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center h3 { font-family: "sofia-pro", sans-serif; font-weight: 900; font-size: 23px; position: absolute; left: 25px; top: -18px; margin: 0; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center .project-home-content { height: 100%; position: relative; top: 22px; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center .project-home-content .project-number { position: absolute; bottom: -44px; right: 10%; font-size: 70px; font-weight: 100; font-family: "sofia-pro", sans-serif; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center a { width: 210px; display: block; margin: auto; margin-top: 50px; text-align: center; text-decoration: none; font-family: "sofia-pro", sans-serif; color: #000; border: 2px solid #000; padding: 11px 0; font-size: 15px; line-height: 1; position: relative; transition: all 0.4s ease-in-out; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center a::before, .home .diapo-container .diapo-overflow .project-home .project-home-center a::after { content: ""; position: absolute; top: 4px; width: 97px; height: 25px; opacity: 0; border-top: 2px solid #e2a39a; border-bottom: 2px solid #e2a39a; transition: all 0.4s ease-in-out; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center a::before { left: 4px; border-left: 2px solid #e2a39a; transform: translateX(-5px); }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center a::after { right: 4px; border-right: 2px solid #e2a39a; transform: translateX(5px); }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center a:hover { color: #e2a39a; }
+
+.home .diapo-container .diapo-overflow .project-home .project-home-center a:hover::before, .home .diapo-container .diapo-overflow .project-home .project-home-center a:hover::after { transform: translateX(0); opacity: 1; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center { width: 60%; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center .borders { height: 100%; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center .borders span { position: absolute; background: #000; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center .borders span:first-child { left: 0; height: 90%; width: 2px; bottom: 0; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center .borders span:nth-child(2) { right: 0; height: 2px; width: 70%; top: 0; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center .borders span:nth-child(3) { right: 0; bottom: 0; width: 2px; height: 100%; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center .borders span:last-child { bottom: 0; right: 0; width: 100%; height: 2px; }
+
+.home .diapo-container .diapo-overflow .project-home.current .project-home-center .project-home-content { left: 22px; }
+
+.home .diapo-container .nav { position: absolute; bottom: 3px; width: 100%; }
+
+.home .diapo-container .nav > div { margin: auto; width: 300px; }
+
+.home .diapo-container .nav .dot-nav { display: inline-block; vertical-align: middle; margin-right: 30px; width: 8px; height: 8px; border-radius: 100%; background: #000; position: relative; cursor: pointer; transition: all 0.4s ease-in-out; }
+
+.home .diapo-container .nav .dot-nav:last-child { margin: 0; }
+
+.home .diapo-container .nav .dot-nav::before { content: ""; position: absolute; width: 8px; height: 8px; border: 1px solid #e2a39a; border-radius: 100%; left: -1px; top: -1px; opacity: 0; transition: all 0.4s ease-in-out; }
+
+.home .diapo-container .nav .dot-nav:hover, .home .diapo-container .nav .dot-nav.current { background: #e2a39a; }
+
+.home .diapo-container .nav .dot-nav:hover::before, .home .diapo-container .nav .dot-nav.current::before { opacity: 1; width: 20px; height: 20px; transform: translate(-6px, -6px); }

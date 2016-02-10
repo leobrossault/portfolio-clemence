@@ -38,5 +38,8 @@
   },
   "aliasify": {
     "aliases": {}
+  },
+  "dependencies": {
+    "vue-resize-mixin": "^1.0.1"
   }
 }

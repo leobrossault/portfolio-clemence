@@ -1,0 +1,29 @@
+<div class="diapo-container">
+  <div class="diapo-overflow">
+    <div class="project-home" v-for="project in projects">
+      <div class="project-home-center">
+        <div class="borders">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <h3>{{ project.title }}</h3>
+
+        <div class="project-home-content" data-color="{{ project.meta.project_color }}">
+          <div class="project-home-img"></div>
+          <p class="project-number">{{ project.meta.project_number }}</p>
+        </div>
+
+        <a href="/project/{{ project.slug }}">Voir le projet</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div>
+      <span class="dot-nav" v-for="project in projects"></span>
+    </div>
+  </div>
+</div>

@@ -2,9 +2,7 @@
 
 // all constants
 var Const = {
-
-	//Place your constants here
-
+	urlSite: 'http://localhost:8888/'
 };
 
 module.exports = Const;

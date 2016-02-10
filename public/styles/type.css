@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 
-body { margin: 0; height: 100%; width: 100%; }
+html, body, #app { margin: 0; height: 100%; width: 100%; }
 
 p, h1 { margin: 0; }
 
@@ -41,7 +41,7 @@ p, h1 { margin: 0; }
 
 #header .close-menu > div h1, #header .close-menu > div p { font-weight: 700; }
 
-#header .close-menu > div#logo a { max-width: 150px; min-width: 50px; width: 30%; display: block; }
+#header .close-menu > div#logo a { max-width: 150px; min-width: 50px; width: 30%; display: block; margin: auto; }
 
 #header .close-menu > div#logo a img { max-width: 100%; }
 
@@ -65,7 +65,15 @@ p, h1 { margin: 0; }
 
 #header .open-menu ul li:last-child { margin: 0; }
 
-#header .open-menu ul li a { text-decoration: none; color: #000; font-family: "sofia-pro", sans-serif; font-size: 20px; font-weight: 700; transform: translateY(-15px); opacity: 0; display: block; }
+#header .open-menu ul li a { text-decoration: none; color: #000; font-family: "sofia-pro", sans-serif; font-size: 20px; font-weight: 700; transform: translateY(-15px); opacity: 0; display: block; position: relative; }
+
+#header .open-menu ul li a::before, #header .open-menu ul li a::after { content: ""; position: absolute; height: 3px; width: 50%; max-width: 0; transition: all 0.4s ease-in-out; bottom: -5px; background: #000; }
+
+#header .open-menu ul li a::before { right: 50%; }
+
+#header .open-menu ul li a::after { left: 50%; }
+
+#header .open-menu ul li a:hover::before, #header .open-menu ul li a:hover::after, #header .open-menu ul li a.active::before, #header .open-menu ul li a.active::after { max-width: 50%; }
 
 #header .open-menu ul li:nth-child(1) a { transition: all 0.4s 0.2s ease-in-out; }
 
