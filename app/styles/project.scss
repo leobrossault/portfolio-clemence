@@ -1,0 +1,150 @@
+// TMP
+
+$mainFont: "sofia-pro",sans-serif;
+$pink: #e2a39a;
+$textColor: #1b313f;
+
+//
+
+// PROJECTS COLORS
+
+// NOOKE
+$nookeMain: #e2a39a;
+$nookeSecond: #d17373;
+
+// SNCF
+$sncfMain: #850058;
+
+// FLORILEGE
+$florilegeMain: #cea888;
+
+.project {
+  width: 100%;
+  margin-top: -15%;
+
+  > div {
+    opacity: 0;
+  }
+
+  .section-prez {
+    width: 60%;
+    margin: auto;
+    background: #fff;
+    padding: 60px 8% 100px 8%;
+    animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+    h4, p {
+      text-align: center;
+      margin: 0;
+    }
+
+    h4 {
+      font-family: $mainFont;
+      font-weight: 700;
+      font-size: 25px;
+      letter-spacing: 0.08em;
+      color: $textColor;
+      position: relative;
+      opacity: 0;
+      animation: bottomToTopSection 0.8s 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 30px;
+        height: 2px;
+        margin: auto;
+        margin-top: 6px;
+      }
+    }
+
+    .project-type {
+      font-family: $mainFont;
+      font-weight: 300;
+      color: $textColor;
+      font-size: 14px;
+      margin: 10px 0 20px;
+      opacity: 0;
+      animation: bottomToTopSection 0.8s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .project-description p {
+      text-align: left;
+      color: $textColor;
+      font-size: 18px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: bottomToTopSection 0.8s 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+  }
+
+  .section-main-img {
+    animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+    img {
+      width: 50%;
+      display: block;
+      margin: auto;
+    }
+  }
+
+  .section-all-img {
+    animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+}
+
+@keyframes bottomToTopSection {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bottomToTopDiv {
+  0% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.project.project-nooke {
+  .section-prez {
+    h4::after {
+      background: $nookeMain;
+    }
+  }
+  .section-main-img {
+    background: $nookeSecond;
+  }
+}
+
+.project.project-sncf {
+  .section-prez {
+    h4::after {
+      background: $sncfMain;
+    }
+  }
+  .section-main-img {
+    background: $sncfMain;
+  }
+}
+
+.project.project-florilege {
+  .section-prez {
+    h4::after {
+      background: $florilegeMain;
+    }
+  }
+  .section-main-img {
+    background: $florilegeMain;
+  }
+}

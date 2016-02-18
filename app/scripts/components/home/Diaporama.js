@@ -27,20 +27,20 @@ let Diaporama = Vue.extend({
   ready: function () {
     this.index = 1;
     this.buildDiaporama ();
-
-    let colorProject = document.querySelectorAll('.project-home-content');
-
-    for (let i = 0; colorProject.length > i; i ++) {
-      colorProject[i].style.background = colorProject[i].getAttribute('data-color');
-    }
+    //
+    // let colorProject = document.querySelectorAll('.project-home-content');
+    //
+    // for (let i = 0; colorProject.length > i; i ++) {
+    //   colorProject[i].style.background = colorProject[i].getAttribute('data-color');
+    // }
   },
   methods: {
     buildDiaporama: function () {
       // Build diaporama
       let projects = document.querySelectorAll('.project-home'),
           projectsContainer = document.querySelector('.diapo-overflow'),
-          projectWidth = window.innerWidth * (90 / 100),
-          projectMargin = window.innerWidth * (5 / 100);
+          projectWidth = window.innerWidth * (75 / 100),
+          projectMargin = window.innerWidth * (20 / 100);
 
       for (let i = 0; projects.length > i; i ++) {
         projects[i].style.width = projectWidth + 'px';
@@ -65,9 +65,6 @@ let Diaporama = Vue.extend({
       prevProject[0].classList.add('prev-current');
       nextProject[0].classList.add('next-current');
 
-      prevProject[0].addEventListener('click', this.prevProject(), false);
-      nextProject[0].addEventListener('click', this.nextProject(), false);
-
       // Nav
       let navContainer = document.querySelector('.nav > div'),
           indexNav = this.index + 1,
@@ -77,42 +74,107 @@ let Diaporama = Vue.extend({
       navContainer.style.width = navContainerWidth + 'px';
       currentNav.classList.add('current');
     },
+    basicNav: function (e) {
+      if (e.target.parentNode.parentNode.parentNode.classList.contains('prev-current')) {
+        this.prevProject();
+      } else if (e.target.parentNode.parentNode.parentNode.classList.contains('next-current')) {
+        this.nextProject();
+      }
+    },
     prevProject: function () {
-      console.log('prev');
       if (this.index > 0) {
         this.index --;
         this.moveDiapo ('left', 1);
       }
     },
     nextProject: function () {
-      console.log('next');
       if (this.index < this.object.length) {
         this.index ++;
         this.moveDiapo ('right', 1);
       }
     },
-    clickNav: function () {
+    clickNav: function (e) {
+      let dotNav = document.querySelectorAll('.dot-nav'),
+          oldCurrent,
+          newCurrent,
+          projectsContainer = document.querySelector('.diapo-overflow'),
+          projects = document.querySelectorAll('.project-home'),
+          translation = projectsContainer.style.transform.substring(projectsContainer.style.transform.lastIndexOf("(")+1,projectsContainer.style.transform.lastIndexOf("px"));
 
+      for (let m = 0; dotNav.length > m; m ++) {
+        if (dotNav[m].classList.contains('current')) {
+          oldCurrent = m;
+        }
+
+        if (dotNav[m] == e.target) {
+          newCurrent = m;
+          this.index = m;
+        }
+      }
+
+      for (let j = 0; projects.length > j; j ++) {
+        projects[j].classList.remove('current');
+        projects[j].classList.remove('prev-current');
+        projects[j].classList.remove('next-current');
+        dotNav[j].classList.remove('current');
+
+        if (j == this.index) {
+          projects[j].classList.add('current');
+          dotNav[j].classList.add('current');
+        } else if (j == this.index - 1) {
+          projects[j].classList.add('prev-current');
+        } else if (j == this.index + 1) {
+          projects[j].classList.add('next-current');
+        }
+      }
+
+      if (newCurrent > oldCurrent) {
+        if (newCurrent - oldCurrent == 1) {
+          translation = parseInt(translation) -  parseInt(this.translation) - parseInt(this.translation) / 2.7;
+        } else {
+          translation = parseInt(translation) - (newCurrent - oldCurrent) * (parseInt(this.translation) + parseInt(this.translation) / 2.7);
+        }
+      } else {
+        if (oldCurrent - newCurrent == 1) {
+          translation = parseInt(translation) +  parseInt(this.translation) + parseInt(this.translation) / 2.7;
+        } else {
+          translation = parseInt(translation) + (oldCurrent - newCurrent) * (parseInt(this.translation) + parseInt(this.translation) / 2.7);
+        }
+      }
+
+      console.log(translation);
+      projectsContainer.style.transform = 'translateX(' + translation + 'px)';
     },
     moveDiapo: function (direction, nb) {
       let projectsContainer = document.querySelector('.diapo-overflow'),
-          translation = projectsContainer.style.transform;
+          translation = projectsContainer.style.transform.substring(projectsContainer.style.transform.lastIndexOf("(")+1,projectsContainer.style.transform.lastIndexOf("px")),
+          projects = document.querySelectorAll('.project-home'),
+          transformValue,
+          dotNav = document.querySelectorAll('.dot-nav');
 
-      console.log(translation);
+      for (let j = 0; projects.length > j; j ++) {
+        projects[j].classList.remove('current');
+        projects[j].classList.remove('prev-current');
+        projects[j].classList.remove('next-current');
+        dotNav[j].classList.remove('current');
 
-      // for (let j = 0; projects.length > j; j ++) {
-      //   projects[j].classList.remove('current');
-      // }
-      //
-      // if (j == this.index) {
-      //   projects[j].classList.add('current');
-      // }
-      //
-      // if (direction == 'left') {
-      //   projectsContainer.style.transform = 'translateX(-' + this.translation + 'px)';
-      // } else if (direction == 'right') {
-      //   projectsContainer.style.transform = 'translateX(-' + this.translation + 'px)';
-      // }
+        if (j == this.index) {
+          projects[j].classList.add('current');
+          dotNav[j].classList.add('current');
+        } else if (j == this.index - 1) {
+          projects[j].classList.add('prev-current');
+        } else if (j == this.index + 1) {
+          projects[j].classList.add('next-current');
+        }
+      }
+
+      if (direction == 'left') {
+        transformValue = parseInt(translation) + parseInt(this.translation) + parseInt(this.translation) / 2.7;
+      } else if (direction == 'right') {
+        transformValue = parseInt(translation) - parseInt(this.translation) - parseInt(this.translation) / 2.7;
+      }
+
+      projectsContainer.style.transform = 'translateX(' + transformValue + 'px)';
     },
     onResize: function(event) {
       if (this.index == undefined) {

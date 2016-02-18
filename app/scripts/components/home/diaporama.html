@@ -1,7 +1,17 @@
 <div class="diapo-container">
   <div class="diapo-overflow">
-    <div class="project-home" v-for="project in projects">
+    <div class="project-home" v-for="project in projects" v-on:click="basicNav">
       <div class="project-home-center">
+        <p class="prev-project-label">
+          <span>Next project</span>
+          <span style="color: {{ project.meta.project_color }};">{{ project.title }}</span>
+        </p>
+
+        <p class="next-project-label">
+          <span>Previous project</span>
+          <span style="color: {{ project.meta.project_color }};">{{ project.title }}</span>
+        </p>
+
         <div class="borders">
           <span></span>
           <span></span>
@@ -11,19 +21,22 @@
 
         <h3>{{ project.title }}</h3>
 
-        <div class="project-home-content" data-color="{{ project.meta.project_color }}">
-          <div class="project-home-img"></div>
+        <div class="project-home-content">
+          <span class="project-bg" style="background: {{ project.meta.project_color }};"></span>
+          <div class="project-home-img">
+            <img src="{{{ project.meta.project_main_img.url }}}" alt="{{ project.meta.project_main_img.title }}">
+          </div>
           <p class="project-number">{{ project.meta.project_number }}</p>
         </div>
 
-        <a href="/project/{{ project.slug }}">Voir le projet</a>
+        <a href="#!/project/{{ project.slug }}">Voir le projet</a>
       </div>
     </div>
   </div>
 
   <div class="nav">
     <div>
-      <span class="dot-nav" v-for="project in projects"></span>
+      <span class="dot-nav" v-for="project in projects" v-on:click="clickNav"></span>
     </div>
   </div>
 </div>

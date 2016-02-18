@@ -1,5 +1,27 @@
 <!-- Project Template -->
 
-<div class="project">
-  <p>Project</p>
+<div class="project project-{{ inProject.slug }}">
+  <div class="section-prez">
+    <h4>{{ inProject.title }}</h4>
+    <p class="project-type">{{ inProject.meta.project_type }}</p>
+    <p class="project-description">{{{ inProject.content }}}</p>
+  </div>
+
+  <div class="section-main-img">
+    <img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" >
+  </div>
+
+  <div class="section-all-img">
+    <!-- <img src="{{{ inProject.meta.project_third_img.url }}}" alt="{{ inProject.meta.project_third_img.title }}" ><img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" >
+    <img src="{{{ inProject.meta.project_four_img.url }}}" alt="{{ inProject.meta.project_four_img.title }}" ><img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" >
+    <img src="{{{ inProject.meta.project_five_img.url }}}" alt="{{ inProject.meta.project_five_img.title }}" ><img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" > -->
+  </div>
+
+  <div class="credits">
+
+  </div>
+
+  <div class="next-project">
+
+  </div>
 </div>

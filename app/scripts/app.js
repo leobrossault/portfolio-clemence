@@ -21,12 +21,11 @@ let App = Vue.extend({}),
 router.map({
     '/': {
         component: Home,
-    },
-    '/home': {
-        component: Home
-    },
-    '/project': {
-        component: Project
+        subRoutes: {
+          '/project/:projectName': {
+              component: Project
+          },
+        }
     },
     '/about': {
         component: About
