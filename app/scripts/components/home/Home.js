@@ -10,6 +10,12 @@ let Home = Vue.extend({
   },
   route: {
     activate: function (transition) {
+      // if (window.location.pathname == '/') {
+      //   let projectsContainer = document.querySelector('.diapo-overflow');
+      //
+      //   projectsContainer.classList.remove('project-page');
+      // }
+
       setTimeout(transition.next, 1000);
     }
   },

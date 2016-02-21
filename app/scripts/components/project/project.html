@@ -7,21 +7,53 @@
     <p class="project-description">{{{ inProject.content }}}</p>
   </div>
 
-  <div class="section-main-img">
+  <div class="section-main-img isNot">
     <img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" >
   </div>
 
   <div class="section-all-img">
-    <!-- <img src="{{{ inProject.meta.project_third_img.url }}}" alt="{{ inProject.meta.project_third_img.title }}" ><img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" >
-    <img src="{{{ inProject.meta.project_four_img.url }}}" alt="{{ inProject.meta.project_four_img.title }}" ><img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" >
-    <img src="{{{ inProject.meta.project_five_img.url }}}" alt="{{ inProject.meta.project_five_img.title }}" ><img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" > -->
+    {{#if inProject.meta.project_visual_first}}<img src="{{{ inProject.meta.project_visual_first.url }}}" alt="{{ inProject.meta.project_third_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_second}}<img src="{{{ inProject.meta.project_visual_second.url }}}" alt="{{ inProject.meta.project_four_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_third}}<img src="{{{ inProject.meta.project_visual_third.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_fourth}}<img src="{{{ inProject.meta.project_visual_fourth.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_fifth}}<img src="{{{ inProject.meta.project_visual_fifth.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_six}}<img src="{{{ inProject.meta.project_visual_six.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_seventh}}<img src="{{{ inProject.meta.project_visual_seventh.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_eighth}}<img src="{{{ inProject.meta.project_visual_eighth.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
   </div>
 
-  <div class="credits">
+  <div class="section-credits isNot">
+    <h5>Crédits</h5>
 
+    <div class="credit-da">
+      <p>Conception & Direction Artistique :</p>
+      <p>{{ inProject.meta.project_designer }}</p>
+    </div>
+
+    <div class="credit-dev">
+      <p>Conception & Développement :</p>
+      <p>{{ inProject.meta.project_developer }}</p>
+    </div>
+
+    <p class="project-environment">{{ inProject.meta.project_environment }}</p>
+
+    <a href="{{ inProject.meta.project_external_link }}" target="_blank" class="project-link">Voir le site</a>
+
+    <p class="project-copyright">All works Copyright © 2016 Clémence Taillez</p>
   </div>
 
-  <div class="next-project">
-
+  <div class="next-project isNot">
+    <a href="#" style="background: {{ inProject.meta.next_project_color }};">
+      <span class="border-next-project">
+        <span class="top-border-next-project"></span>
+        <span class="top-border-next-project"></span>
+        <span class="side-border-next-project"></span>
+        <span class="side-border-next-project"></span>
+        <span class="bottom-border-next-project"></span>
+        <span class="bottom-border-next-project"></span>
+      </span>
+      <span style="background: {{ inProject.meta.next_project_color }};">Next project</span>
+      <span class="title-next-project">{{ inProject.meta.next_project_title }}</span>
+    </a>
   </div>
 </div>

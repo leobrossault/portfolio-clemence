@@ -34,9 +34,12 @@
     </div>
   </div>
 
+  <a v-on:click="quitProject" id="close-project"></a>
+
   <div class="nav">
     <div>
       <span class="dot-nav" v-for="project in projects" v-on:click="clickNav"></span>
     </div>
   </div>
+
 </div>

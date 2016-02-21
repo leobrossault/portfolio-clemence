@@ -27,12 +27,6 @@ let Diaporama = Vue.extend({
   ready: function () {
     this.index = 1;
     this.buildDiaporama ();
-    //
-    // let colorProject = document.querySelectorAll('.project-home-content');
-    //
-    // for (let i = 0; colorProject.length > i; i ++) {
-    //   colorProject[i].style.background = colorProject[i].getAttribute('data-color');
-    // }
   },
   methods: {
     buildDiaporama: function () {
@@ -182,6 +176,17 @@ let Diaporama = Vue.extend({
       }
 
       this.buildDiaporama();
+    },
+    quitProject: function () {
+      let projectsContainer = document.querySelector('.diapo-overflow'),
+          project = document.querySelector('.project');
+      projectsContainer.classList.remove('project-page');
+      project.classList.add('leave-project');
+
+      setTimeout(this.redirect , 500);
+    },
+    redirect: function () {
+      this.$route.router.go('/');
     }
   }
 });

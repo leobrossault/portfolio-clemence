@@ -24,6 +24,24 @@ let Project = Vue.extend({
     ready: function () {
       let container = document.querySelectorAll('.diapo-overflow');
       container[0].classList.add('project-page');
+      console.log('debug');
+      window.addEventListener('scroll', this.isInViewPort);
+    },
+    methods: {
+      isInViewPort: function () {
+        let scrollTop = document.body.scrollTop,
+            viewportHeight = window.innerHeight,
+            isNot = document.querySelectorAll('.isNot');
+
+        [].forEach.call(isNot, function(item, i) {
+          let top = document.body.scrollTop + item.getBoundingClientRect().top,
+              sum = scrollTop + viewportHeight;
+
+          if (scrollTop + viewportHeight > top + 200) {
+            item.classList.add('isIt');
+          }
+        });
+      }
     }
 });
 

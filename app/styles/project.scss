@@ -1,6 +1,7 @@
 // TMP
 
-$mainFont: "sofia-pro",sans-serif;
+$mainFont: "sofia-pro", sans-serif;
+$secondFont: "ff-tisa-web-pro";
 $pink: #e2a39a;
 $textColor: #1b313f;
 
@@ -18,9 +19,58 @@ $sncfMain: #850058;
 // FLORILEGE
 $florilegeMain: #cea888;
 
+
+#close-project {
+  opacity: 0;
+}
+
+.diapo-overflow {
+  &.project-page + #close-project {
+    opacity: 1;
+    position: absolute;
+    z-index: 99;
+    right: 5%;
+    top: 5%;
+    width: 20px;
+    cursor: pointer;
+    height: 20px;
+    transition: all 0.4s ease-in-out;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background: #fff;
+      height: 100%;
+      width: 2px;
+      border-radius: 2px;
+      top: 0;
+      right: 50%;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
 .project {
   width: 100%;
   margin-top: -15%;
+  transition: all 0.4s ease-in-out;
+
+  &.leave-project {
+    transform: translateY(100px);
+    opacity: 0;
+  }
 
   > div {
     opacity: 0;
@@ -70,6 +120,7 @@ $florilegeMain: #cea888;
 
     .project-description p {
       text-align: left;
+      font-family: $secondFont;
       color: $textColor;
       font-size: 18px;
       line-height: 1.6;
@@ -79,7 +130,9 @@ $florilegeMain: #cea888;
   }
 
   .section-main-img {
-    animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    &.isIt {
+      animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
 
     img {
       width: 50%;
@@ -89,7 +142,247 @@ $florilegeMain: #cea888;
   }
 
   .section-all-img {
-    animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    width: 70%;
+    margin: auto;
+    background: #f5f5f5;
+    opacity: 1;
+
+    img {
+      max-width: 100%;
+      display: block;
+      margin: auto;
+      opacity: 0;
+
+      &.isIt {
+        animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+    }
+  }
+
+  .section-credits {
+    width: 60%;
+    margin: auto;
+    padding: 60px 8% 50px 8%;
+    background: #fff;
+
+    &.isIt {
+      animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    h5 {
+      font-family: $mainFont;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      color: $textColor;
+      margin: 0 0 30px 0;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      animation: bottomToTopSection 0.8s 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 2px;
+        margin: auto;
+        margin-top: 6px;
+      }
+    }
+
+    .credit-da,
+    .credit-dev {
+      display: flex;
+      flex-grow: 1;
+
+      p {
+        margin: 0;
+        color: $textColor;
+        font-size: 18px;
+        font-family: $secondFont;
+        line-height: 1.6;
+
+        &:last-child {
+          padding-left: 5px;
+        }
+      }
+    }
+
+    .project-environment {
+      text-align: center;
+      color: $textColor;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 30px 0 35px;
+      font-family: $secondFont;
+    }
+
+    .project-link {
+      width: 35%;
+      min-width: 150px;
+      border: 2px solid #222222;
+      color: #222222;
+      font-family: $mainFont;
+      text-align: center;
+      display: block;
+      margin: auto;
+      padding: 10px 0;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+        background: #222222;
+        color: #fff;
+      }
+    }
+
+    .project-copyright {
+      text-align: center;
+      font-family: $mainFont;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 30px 0;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  .next-project {
+    width: 100%;
+    height: 200px;
+
+    &.isIt {
+      animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+      a .border-next-project {
+        .top-border-next-project {
+          max-width: 45%;
+          transition: all 0.6s ease-in-out;
+        }
+
+        .side-border-next-project {
+          max-height: 130px;
+          transition: all 0.6s 0.6s ease-in-out;
+        }
+
+        .bottom-border-next-project {
+          max-width: 50%;
+          transition: all 0.6s 1.2s ease-in-out;
+        }
+      }
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding: 30px 50px;
+      text-decoration: none;
+
+      &:hover {
+        .border-next-project + span::after {
+          width: 60px;
+        }
+
+        .title-next-project {
+          transform: translateY(-15px);
+        }
+      }
+
+      .border-next-project {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
+        span {
+          background: $textColor;
+          position: absolute;
+        }
+
+        .top-border-next-project {
+          top: 40px;
+          height: 2px;
+          width: 45%;
+          max-width: 0;
+
+          &:first-child {
+            right: 50%;
+          }
+
+          &:first-child + span {
+            left: 50%;
+          }
+        }
+
+        .side-border-next-project {
+          width: 2px;
+          height: 130px;
+          left: 5%;
+          top: 40px;
+          max-height: 0;
+
+          & + .side-border-next-project {
+            left: 95%;
+          }
+        }
+
+        .bottom-border-next-project {
+          width: 45%;
+          top: 170px;
+          height: 2px;
+          max-width: 0;
+
+          &:last-child {
+            right: calc(5% - 2px);
+          }
+        }
+
+        .side-border-next-project + .bottom-border-next-project {
+          left: 5%;
+          width: calc(45% + 2px);
+        }
+      }
+
+      .border-next-project + span {
+        text-align: center;
+        font-family: $mainFont;
+        display: block;
+        color: $textColor;
+        font-size: 15px;
+        padding: 0 60px;
+        width: 220px;
+        margin: auto;
+        position: relative;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 15px;
+          height: 2px;
+          margin: auto;
+          margin-top: 6px;
+          background: #fff;
+          transition: all 0.6s ease-in-out;
+        }
+      }
+
+      .title-next-project {
+        text-align: center;
+        font-size: 30px;
+        font-family: $mainFont;
+        color: $textColor;
+        font-weight: 700;
+        display: block;
+        margin-top: 30px;
+        transition: all 0.4s ease-in-out;
+      }
+    }
   }
 }
 
@@ -124,6 +417,12 @@ $florilegeMain: #cea888;
   }
   .section-main-img {
     background: $nookeSecond;
+  }
+
+  .section-credits {
+    h5::after {
+      background: $nookeSecond;
+    }
   }
 }
 
