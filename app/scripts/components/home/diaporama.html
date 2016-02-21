@@ -1,6 +1,6 @@
 <div class="diapo-container">
   <div class="diapo-overflow">
-    <div class="project-home" v-for="project in projects" v-on:click="basicNav">
+    <div class="project-home home-{{ project.slug }}" v-for="project in projects" v-on:click="basicNav">
       <div class="project-home-center">
         <p class="prev-project-label">
           <span>Next project</span>
@@ -29,7 +29,15 @@
           <p class="project-number">{{ project.meta.project_number }}</p>
         </div>
 
-        <a href="#!/project/{{ project.slug }}">Voir le projet</a>
+        <a href="#!/project/{{ project.slug }}">
+          <span class="see-border-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          Voir le projet
+        </a>
       </div>
     </div>
   </div>
