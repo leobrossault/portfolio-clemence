@@ -1,0 +1,299 @@
+.about {
+  transition: all 0.8s ease-in-out;
+  opacity: 0;
+  animation: appearAbout 0.6s ease-in-out forwards;
+
+
+  &.leave-about {
+    animation: leaveAbout 0.6s ease-in-out forwards;
+  }
+
+  .about-container {
+    width: 60%;
+    margin: auto;
+    padding-top: 50px;
+
+    .about-photo {
+      position: relative;
+      width: 100%;
+
+      .about-photo-border {
+        position: absolute;
+        left: -22px;
+        top: -22px;
+        width: 100%;
+        height: 100%;
+
+        span {
+          position: absolute;
+          background: #000;
+
+          &:first-child,
+          &:nth-child(2) {
+            transition: all 0.6s 0.6s ease-in-out;
+          }
+
+          &:nth-child(3),
+          &:last-child {
+            transition: all 0.4s 1.2s ease-in-out;
+          }
+
+          &:first-child {
+            left: 0;
+            height: 90%;
+            width: 2px;
+            bottom: 0;
+            max-height: 0;
+            animation: spanLeft 0.6s 1.2s ease-in-out forwards;
+          }
+
+          &:nth-child(2) {
+            right: 0;
+            height: 2px;
+            width: 90%;
+            top: 0;
+            max-width: 0;
+            animation: spanTop 0.6s 1.2s ease-in-out forwards;
+          }
+
+          &:nth-child(3) {
+            right: 0;
+            bottom: 0;
+            width: 2px;
+            height: 100%;
+            max-height: 0;
+            animation: spanRight 0.6s 0.6s ease-in-out forwards;
+          }
+
+          &:last-child {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            max-width: 0;
+            animation: spanBottom 0.6s 0.6s ease-in-out forwards;
+          }
+        }
+      }
+
+      h3 {
+        margin: 0;
+        font-family: $mainFont, 'Arial';
+        font-weight: 900;
+        font-size: 23px;
+        margin: 0 0 8px 0;
+        background: #fff;
+        padding-right: 30px;
+        color: #0090dc;
+        position: relative;
+        display: inline-block;
+        z-index: 15;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: titleAbout 0.4s 1s ease-in-out forwards;
+      }
+
+      h3 + div {
+        position: relative;
+      }
+
+      img {
+        max-width: 100%;
+        vertical-align: bottom;
+      }
+
+      p {
+        margin: 0;
+        position: absolute;
+        color: #fff;
+        font-size: 70px;
+        font-weight: 100;
+        font-family: $mainFont;
+        bottom: 26px;
+        right: 26px;
+        line-height: 1;
+        letter-spacing: 0.08em;
+      }
+    }
+
+    .link-text {
+      height: 60px;
+      width: 2px;
+      margin: auto;
+      display: block;
+
+      span {
+        background: #323232;
+        height: 100%;
+        width: 100%;
+        display: block;
+        max-height: 0;
+        animation: linkText 0.4s 1.8s ease-in-out forwards;
+      }
+    }
+
+    .about-content-text {
+      background: #f8f8f8;
+      width: 100%;
+      padding: 5%;
+      margin-bottom: 100px;
+      opacity: 0;
+      animation: bottomToTopSection 1s 2.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+      p {
+        margin: 0;
+
+        &.intro {
+          position: relative;
+          font-family: $mainFont;
+          font-weight: 700;
+          font-size: 30px;
+
+          &::after {
+            content: "";
+            width: 30px;
+            display: block;
+            height: 2px;
+            margin: 20px auto 25px;
+            background: #0090dc;
+          }
+        }
+
+        &.content-text {
+          font-family: $secondFont;
+          color: #222222;
+          font-size: 17px;
+        }
+      }
+
+      .skills {
+        display: flex;
+        margin: 40px 0;
+        justify-content: center;
+
+        span {
+          display: block;
+          width: 40px;
+          height: 40px;
+          border: 2px solid #0090dc;
+
+          &:nth-child(2) {
+            margin: 0 14%;
+          }
+        }
+      }
+
+      .cv-contact {
+        width: 80%;
+        margin: auto;
+
+        div {
+          display: flex;
+          justify-content: space-between;
+
+          a {
+            width: 43%;
+            text-decoration: none;
+            display: block;
+            font-family: $mainFont;
+            text-align: center;
+            font-weight: 700;
+            font-size: 17px;
+            color: #222222;
+            padding: 10px 0;
+            letter-spacing: 0.08em;
+            transition: all 0.4s ease-in-out;
+
+            &#cv-button {
+              position: relative;
+
+              &::after,
+              &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: #222222;
+                transition: all 0.4s ease-in-out;
+              }
+
+              &::before {
+                opacity: 0.3;
+              }
+
+              &:hover {
+                &::after {
+                  transform: translateY(-46px);
+                }
+              }
+            }
+
+            &#say-button {
+              border: 2px solid #222222;
+
+              &:hover {
+                color: #f8f8f8;
+                background: #222222;
+              }
+            }
+          }
+        }
+
+        & + p {
+          text-align: center;
+          font-family: $mainFont;
+          font-weight: 700;
+          font-size: 14px;
+          margin: 80px 0 0;
+          letter-spacing: 0.08em;
+        }
+      }
+    }
+  }
+}
+
+
+// ANIMATIONS
+@keyframes appearAbout {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes leaveAbout {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+@keyframes titleAbout {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes spanLeft {
+  100% { max-height: 100%;}
+}
+@keyframes spanTop {
+  100% { max-width: 100%;}
+}
+@keyframes spanRight {
+  100% { max-height: 100%;}
+}
+@keyframes spanBottom {
+  100% { max-width: 100%;}
+}
+@keyframes linkText {
+  100% { max-height: 60px;}
+}

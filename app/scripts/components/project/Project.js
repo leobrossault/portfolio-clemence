@@ -24,7 +24,7 @@ let Project = Vue.extend({
     ready: function () {
       let container = document.querySelectorAll('.diapo-overflow');
       container[0].classList.add('project-page');
-      console.log('debug');
+
       window.addEventListener('scroll', this.isInViewPort);
     },
     methods: {

@@ -1,40 +1,36 @@
-// TMP
-
-$mainFont: "sofia-pro", sans-serif;
-$secondFont: "ff-tisa-web-pro";
-$pink: #e2a39a;
-$textColor: #1b313f;
-
-//
-
-// PROJECTS COLORS
-
-// NOOKE
-$nookeMain: #e2a39a;
-$nookeSecond: #d17373;
-
-// SNCF
-$sncfMain: #850058;
-
-// FLORILEGE
-$florilegeMain: #cea888;
-
 
 #close-project {
   opacity: 0;
+  transform: translateY(-20px);
+  position: absolute;
+  z-index: 99;
+  right: 5%;
+  top: 5%;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  pointer-events: none;
+  transition: all 0.4s ease-in-out;
 }
 
 .diapo-overflow {
   &.project-page + #close-project {
     opacity: 1;
-    position: absolute;
-    z-index: 99;
-    right: 5%;
-    top: 5%;
-    width: 20px;
+    transform: translateY(0);
+    pointer-events: auto;
     cursor: pointer;
-    height: 20px;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s 0.6s ease-in-out;
+
+    span {
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: calc(50% - 1px);
+      right: 0;
+      background: #fff;
+      max-width: 0;
+      transition: max-width 0.2s 0.4s ease-in-out, transform 0.4s ease-in-out;
+    }
 
     &::before,
     &::after {
@@ -45,7 +41,7 @@ $florilegeMain: #cea888;
       width: 2px;
       border-radius: 2px;
       top: 0;
-      right: 50%;
+      right: calc(50% - 1px);
     }
 
     &::before {
@@ -57,7 +53,13 @@ $florilegeMain: #cea888;
     }
 
     &:hover {
-      transform: scale(1.1);
+      transform: translateY(0) scale(1.1);
+
+      span {
+        max-width: 100%;
+        transform: translateX(-100%);
+        transition: max-width 0.2s ease-in-out, transform 0.4s 0.2s ease-in-out;
+      }
     }
   }
 }

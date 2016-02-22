@@ -1,5 +1,49 @@
 <!-- About Template -->
 
 <div class="about">
-  <p>About</p>
+  <div class="about-container">
+    <div class="about-photo">
+      <h3>{{ about.title }}</h3>
+
+      <div>
+        <span class="about-photo-border">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <img src="{{ about.featured_image.source }}" alt="Clémence Taillez">
+      </div>
+
+      <p>Hello !</p>
+    </div>
+
+    <span class="link-text">
+      <span></span>
+    </span>
+
+    <div class="about-content-text isNot">
+      <p class="intro">I’m Clémence Taillez, a french 22-year old interactive designer, based in Paris.</p>
+
+      <p class="content-text">
+        {{{ about.content }}}
+      </p>
+
+      <div class="skills">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="cv-contact">
+        <div>
+          <a href="#" id="cv-button">CV</a>
+          <a href="#" id="say-button">Say Hello !</a>
+        </div>
+      </div>
+
+      <p>All works Copyright © 2016 Clémence Taillez</p>
+    </div>
+  </div>
 </div>

@@ -9,9 +9,27 @@ let Home = Vue.extend({
     'diaporama': Diaporama,
   },
   route: {
-    activate: function (transition) {
+    activate: function () {
+      let menuHome = document.querySelector('.open-menu li:first-child a');
+      menuHome.classList.add('active');
+    },
+    canDeactivate: function (transition) {
+      let home = document.querySelector('.home'),
+          menuHome = document.querySelector('.open-menu li:first-child a');
+      home.classList.add('leave-home');
+      menuHome.classList.remove('active');
+
       setTimeout(transition.next, 1000);
     }
+  },
+  ready: function () {
+    let home = document.querySelector('.home');
+    home.classList.add('load-home');
+
+    setTimeout(function () {
+      home.classList.add('isLoad-home');
+      home.classList.remove('load-home');
+    }, 1500);
   },
   template: require('./home.html')
 });
