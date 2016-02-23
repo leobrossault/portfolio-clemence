@@ -5,7 +5,44 @@
 
 
   &.leave-about {
-    animation: leaveAbout 0.6s ease-in-out forwards;
+    opacity: 1;
+    animation: leaveAbout 0.6s 0.6s ease-in-out forwards;
+
+    .about-container {
+      .about-photo .about-photo-border {
+        span {
+          &:first-child {
+            max-height: 100%;
+            animation: spanLeftLeave 0.3s 0.4s ease-in-out forwards;
+          }
+
+          &:nth-child(2) {
+            max-width: 100%;
+            animation: spanTopLeave 0.3s 0.4s ease-in-out forwards;
+          }
+
+          &:nth-child(3) {
+            max-height: 100%;
+            animation: spanRightLeave 0.3s 0.7s ease-in-out forwards;
+          }
+
+          &:last-child {
+            max-width: 100%;
+            animation: spanBottomLeave 0.3s 0.7s ease-in-out forwards;
+          }
+        }
+      }
+
+      .link-text span {
+        max-height: 60px;
+        animation: linkTextLeave 0.2s 0.2s ease-in-out forwards;
+      }
+
+      .about-content-text {
+        opacity: 1;
+        animation: topToBottomSection 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+    }
   }
 
   .about-container {
@@ -256,6 +293,7 @@
 
 
 // ANIMATIONS
+// COME
 @keyframes appearAbout {
   0% {
     transform: translateY(-30px);
@@ -264,16 +302,6 @@
   100% {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-@keyframes leaveAbout {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-30px);
-    opacity: 0;
   }
 }
 @keyframes titleAbout {
@@ -296,4 +324,37 @@
 }
 @keyframes linkText {
   100% { max-height: 60px;}
+}
+
+// LEAVE
+@keyframes leaveAbout {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+@keyframes titleAboutLeave {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes spanLeftLeave {
+  100% { max-height: 0%;}
+}
+@keyframes spanTopLeave {
+  100% { max-width: 0%;}
+}
+@keyframes spanRightLeave {
+  100% { max-height: 0%;}
+}
+@keyframes spanBottomLeave {
+  100% { max-width: 0%;}
+}
+@keyframes linkTextLeave {
+  100% { max-height: 0px;}
 }

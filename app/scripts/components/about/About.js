@@ -29,7 +29,7 @@ let About = Vue.extend({
         about.classList.add('leave-about');
         menuAbout.classList.remove('active');
 
-        setTimeout(transition.next, 1000);
+        setTimeout(transition.next, 1500);
       }
     },
     methods: {

@@ -399,6 +399,17 @@
   }
 }
 
+@keyframes topToBottomSection {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+
 @keyframes bottomToTopDiv {
   0% {
     transform: translateY(15px);

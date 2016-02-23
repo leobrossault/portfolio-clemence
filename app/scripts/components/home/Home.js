@@ -19,7 +19,7 @@ let Home = Vue.extend({
       home.classList.add('leave-home');
       menuHome.classList.remove('active');
 
-      setTimeout(transition.next, 1000);
+      setTimeout(transition.next, 1500);
     }
   },
   ready: function () {
@@ -27,9 +27,8 @@ let Home = Vue.extend({
     home.classList.add('load-home');
 
     setTimeout(function () {
-      home.classList.add('isLoad-home');
       home.classList.remove('load-home');
-    }, 1500);
+    }, 2500);
   },
   template: require('./home.html')
 });

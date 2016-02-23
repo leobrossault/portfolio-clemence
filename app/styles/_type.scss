@@ -20,6 +20,7 @@ h1 {
 #header {
   width: 100%;
   position: relative;
+  overflow: hidden;
 
   .close-menu {
     width: 100%;
@@ -254,5 +255,53 @@ h1 {
         }
       }
     }
+  }
+}
+
+// RESPONSIVE
+
+@media screen and (max-width: 650px) {
+  #header .close-menu > div:first-child h1 {
+    display: none;
+  }
+
+  #header .close-menu > div:last-child {
+    width: 1px;
+    opacity: 0;
+  }
+
+  #header .close-menu {
+    height: 92px;
+
+    #logo {
+      position: absolute;
+      left: calc(50% - 43px);
+    }
+  }
+
+  #header {
+    .open-menu ul li,
+    .open-menu ul li:last-child {
+      width: 48%;
+      margin: 0 0 5px 0;
+
+      a {
+        display: inline-block;
+      }
+    }
+  }
+
+  body .home .diapo-container .diapo-overflow .project-home .project-home-center a {
+    margin-top: 38px;
+    position: relative;
+    left: -3%;
+  }
+
+  body .home .diapo-container .nav {
+    bottom: 12px;
+  }
+
+  .home {
+    min-height: 550px;
   }
 }
