@@ -173,7 +173,7 @@
       background: #f8f8f8;
       width: 100%;
       padding: 5%;
-      margin-bottom: 100px;
+      margin-bottom: 25px;
       opacity: 0;
       animation: bottomToTopSection 1s 2.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 
@@ -335,6 +335,21 @@
         }
       }
     }
+  }
+}
+
+#thanks {
+  text-align: center;
+  font-family: $secondFont;
+  margin-bottom: 80px;
+  animation: bottomToTopSection 1s 2.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+  &, a {
+    color: #222222;
+  }
+
+  a {
+    text-decoration: underline;
   }
 }
 
