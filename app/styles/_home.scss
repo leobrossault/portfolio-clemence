@@ -668,8 +668,9 @@
 @media screen and (max-width: 600px) {
 	.home .diapo-container .diapo-overflow .project-home.prev-current,
 	.home .diapo-container .diapo-overflow .project-home.next-current {
-		opacity: 0;
 		animation: none;
+		transition: all 0.4s ease-in-out;
+		opacity: 0;
 	}
 
 	.home .diapo-container .diapo-overflow .project-home.current {

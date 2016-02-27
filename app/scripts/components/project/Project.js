@@ -37,7 +37,7 @@ let Project = Vue.extend({
           let top = document.body.scrollTop + item.getBoundingClientRect().top,
               sum = scrollTop + viewportHeight;
 
-          if (scrollTop + viewportHeight > top + 200) {
+          if (scrollTop + viewportHeight > top + 100) {
             item.classList.add('isIt');
           }
         });

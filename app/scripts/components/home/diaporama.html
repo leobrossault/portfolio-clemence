@@ -24,7 +24,7 @@
         <div class="project-home-content">
           <span class="project-bg" style="background: {{ project.meta.project_color }};"></span>
           <div class="project-home-img">
-            <img src="{{{ project.meta.project_main_img.url }}}" alt="{{ project.meta.project_main_img.title }}">
+            <img v-bind:src="project.meta.project_main_img.url" alt="{{ project.meta.project_main_img.title }}">
           </div>
           <p class="project-number">{{ project.meta.project_number }}</p>
         </div>

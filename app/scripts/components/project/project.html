@@ -8,18 +8,18 @@
   </div>
 
   <div class="section-main-img isNot">
-    <img src="{{{ inProject.meta.project_second_img.url }}}" alt="{{ inProject.meta.project_second_img.title }}" >
+    <img v-bind:src="inProject.meta.project_second_img.url" alt="{{ inProject.meta.project_second_img.title }}" >
   </div>
 
   <div class="section-all-img">
-    {{#if inProject.meta.project_visual_first}}<img src="{{{ inProject.meta.project_visual_first.url }}}" alt="{{ inProject.meta.project_third_img.title }}" class="isNot">{{/if}}
-    {{#if inProject.meta.project_visual_second}}<img src="{{{ inProject.meta.project_visual_second.url }}}" alt="{{ inProject.meta.project_four_img.title }}" class="isNot">{{/if}}
-    {{#if inProject.meta.project_visual_third}}<img src="{{{ inProject.meta.project_visual_third.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
-    {{#if inProject.meta.project_visual_fourth}}<img src="{{{ inProject.meta.project_visual_fourth.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
-    {{#if inProject.meta.project_visual_fifth}}<img src="{{{ inProject.meta.project_visual_fifth.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
-    {{#if inProject.meta.project_visual_six}}<img src="{{{ inProject.meta.project_visual_six.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
-    {{#if inProject.meta.project_visual_seventh}}<img src="{{{ inProject.meta.project_visual_seventh.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
-    {{#if inProject.meta.project_visual_eighth}}<img src="{{{ inProject.meta.project_visual_eighth.url }}}" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_first}}<img v-bind:src="inProject.meta.project_visual_first.url" alt="{{ inProject.meta.project_third_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_second}}<img v-bind:src="inProject.meta.project_visual_second.url" alt="{{ inProject.meta.project_four_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_third}}<img v-bind:src="inProject.meta.project_visual_third.url" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_fourth}}<img v-bind:src="inProject.meta.project_visual_fourth.url" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_fifth}}<img v-bind:src="inProject.meta.project_visual_fifth.url" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_six}}<img v-bind:src="inProject.meta.project_visual_six.url" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_seventh}}<img v-bind:src="inProject.meta.project_visual_seventh.url" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
+    {{#if inProject.meta.project_visual_eighth}}<img v-bind:src="inProject.meta.project_visual_eighth.url" alt="{{ inProject.meta.project_five_img.title }}" class="isNot">{{/if}}
   </div>
 
   <div class="section-credits isNot">

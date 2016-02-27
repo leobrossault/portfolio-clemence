@@ -41,6 +41,8 @@ h1 {
       &:first-child {
         text-align: left;
         padding-left: 10%;
+        opacity: 0;
+        animation: headerLeft 0.8s 0.5s ease-in-out forwards;
 
         h1,
         > span {
@@ -56,16 +58,19 @@ h1 {
           margin-right: 15px;
 
           span {
-            width: 100%;
+            width: 110%;
             height: 3px;
+            max-width: 100%;
             background: #000;
             display: block;
             position: absolute;
             left: 0;
+            opacity: 0;
 
             @for $i from 1 through 3 {
               &:nth-child(#{$i}) {
-                transition: all 0.4s $i * 0.2s ease-in-out;
+                animation: burgerAnim 0.4s $i * 0.1s + 1.5s cubic-bezier(0.56, 0.28, 0.46, 1.17) forwards;
+                transition: all 0.2s $i * 0.1s ease-in-out;
               }
             }
 
@@ -84,7 +89,7 @@ h1 {
 
           &:hover {
             span {
-              transform: scale(1.1);
+              max-width: 110%;
             }
           }
         }
@@ -93,6 +98,8 @@ h1 {
       &:last-child {
         text-align: right;
         padding-right: 10%;
+        opacity: 0;
+        animation: headerRight 0.8s 0.5s ease-in-out forwards;
       }
 
       h1 {
@@ -114,14 +121,200 @@ h1 {
           max-width: 150px;
           min-width: 50px;
           width: 30%;
+          height: 50px;
           display: block;
           margin: auto;
+          position: relative;
 
-          img {
-            max-width: 100%;
+          span {
+            position: absolute;
+
+            .border-left-side-logo {
+              background: #000;
+
+              &:first-child {
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 3px;
+                max-width: 0;
+                animation: maxWidth 0.4s 1.2s ease-in-out forwards;
+              }
+
+              &:nth-child(2) {
+                left: 0;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                max-height: 0;
+                animation: maxHeight 0.4s 1.6s ease-in-out forwards;
+              }
+
+              &:nth-child(3) {
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                max-width: 0;
+                animation: maxWidth 0.4s 2s ease-in-out forwards;
+              }
+            }
+
+            .border-right-side-logo {
+              background: #000;
+
+              &:first-child {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                max-width: 0;
+                animation: maxWidth 0.4s 1.2s ease-in-out forwards;
+              }
+
+              &:nth-child(2) {
+                right: 0;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                max-height: 0;
+                animation: maxHeight 0.4s 1.6s ease-in-out forwards;
+              }
+
+              &:nth-child(3) {
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 3px;
+                max-width: 0;
+                animation: maxWidth 0.4s 2s ease-in-out forwards;
+              }
+            }
+
+            .letter-logo {
+              text-align: center;
+              font-family: $mainFont;
+              font-weight: 700;
+              color: #000;
+              opacity: 0;
+            }
+
+            &#left-side-logo {
+              width: calc(50% - 1.5px);
+              height: 80%;
+              left: 0;
+              top: 0;
+
+              .letter-logo {
+                top: 4px;
+                left: 7px;
+                animation: letterAppearTop 0.4s 2.4s ease-in-out forwards;
+              }
+            }
+
+            &#middle-logo {
+              width: 3px;
+              height: 100%;
+              top: calc(50%);
+              left: calc(50% - 1.5px);
+              background: #000;
+              max-height: 0;
+              animation: centerLogo 0.4s 0.8s ease-in-out forwards;
+            }
+
+            &#right-side-logo {
+              width: calc(50% - 1.5px);
+              height: 80%;
+              right: 0;
+              bottom: 0;
+
+              .letter-logo {
+                bottom: 6px;
+                left: 6px;
+                animation: letterAppearBot 0.4s 2.4s ease-in-out forwards;
+              }
+            }
           }
         }
       }
+    }
+  }
+
+  // LOGO ANIMATION
+
+  @keyframes centerLogo {
+    100% {
+      transform: translateY(-50%);
+      max-height: 100%;
+    }
+  }
+
+  @keyframes maxWidth {
+    100% {
+      max-width: 100%;
+    }
+  }
+
+  @keyframes maxHeight {
+    100% {
+      max-height: 100%;
+    }
+  }
+
+  @keyframes letterAppearTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes letterAppearBot {
+    0% {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // HEADER APPARITION
+  @keyframes headerLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes headerRight {
+    0% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // BURGER ANIMATION
+  @keyframes burgerAnim {
+    0% {
+      opacity: 0;
+      transform: translateX(-15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
@@ -163,15 +356,18 @@ h1 {
         height: 3px;
         background: #000;
         top: 50%;
+        transition: all 0.4s ease-in-out;
 
         &:first-child {
-          transform: rotate(45deg);
           left: 0;
+          transform: rotate(45deg) translateX(-15px);
+          opacity: 0;
         }
 
         &:last-child {
-          transform: rotate(-45deg);
           right: 0;
+          transform: rotate(-45deg) translateX(15px);
+          opacity: 0;
         }
       }
     }
@@ -251,6 +447,32 @@ h1 {
           a {
             transform: translateY(0);
             opacity: 1;
+          }
+        }
+      }
+
+      #burger-menu-close {
+        span {
+          &:first-child {
+            transform: rotate(45deg) translateX(0);
+            opacity: 1;
+          }
+
+          &:last-child {
+            transform: rotate(-45deg) translateX(0);
+            opacity: 1;
+          }
+        }
+
+        &:hover {
+          span {
+            &:first-child {
+              transform: rotate(45deg) translateX(-3px);
+            }
+
+            &:last-child {
+              transform: rotate(-45deg) translateX(3px);
+            }
           }
         }
       }

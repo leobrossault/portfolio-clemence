@@ -10,7 +10,9 @@ let Diaporama = Vue.extend({
   state: {
     object: '',
     index: '',
-    translation: 0
+    translation: 0,
+    xDown: null,
+    yDown: null
   },
   data: function () {
     let Httpreq = new XMLHttpRequest(),
@@ -65,6 +67,12 @@ let Diaporama = Vue.extend({
           currentNav = document.querySelector('.dot-nav:nth-child('+ indexNav +')'),
           navContainerWidth = (8 + 30) * projects.length - 30;
 
+      // Nav mobile
+      if (window.innerWidth <= 600) {
+        document.addEventListener('touchstart', this.handleTouchStart, false);
+        document.addEventListener('touchmove', this.handleTouchMove, false);
+      }
+
       navContainer.style.width = navContainerWidth + 'px';
       currentNav.classList.add('current');
     },
@@ -74,6 +82,32 @@ let Diaporama = Vue.extend({
       } else if (e.target.parentNode.parentNode.parentNode.classList.contains('next-current')) {
         this.nextProject();
       }
+    },
+    handleTouchStart(e) {
+      this.xDown = e.touches[0].clientX;
+      this.yDown = e.touches[0].clientY;
+    },
+    handleTouchMove: function (e) {
+      if ( !this.xDown || !this.yDown ) {
+        return;
+      }
+
+      var xUp = e.touches[0].clientX;
+      var yUp = e.touches[0].clientY;
+
+      var xDiff = this.xDown - xUp;
+      var yDiff = this.yDown - yUp;
+
+      if ( Math.abs(xDiff) > Math.abs(yDiff) ) {
+          if ( xDiff > 0 ) {
+              this.nextProject();
+          } else {
+              this.prevProject();
+          }
+      }
+
+      this.xDown = null;
+      this.yDown = null;
     },
     prevProject: function () {
       if (this.index > 0) {
