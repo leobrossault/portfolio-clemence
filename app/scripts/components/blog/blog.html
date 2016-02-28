@@ -1,0 +1,39 @@
+<div class="blog-home" style="background: url({{ blog.featured_image.source }}) center center; background-size: cover;">
+  <div class="blog-home-center">
+    <div class="borders">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <h3>{{ blog.title }}</h3>
+
+    <div class="blog-intro">
+      <p>{{ numberArticle }}</p>
+      <p>{{{ blog.content }}}</p>
+    </div>
+  </div>
+</div>
+
+<span id="see-articles" v-on:click="seeArticles">Voir les articles</span>
+
+<div class="blog" id="scroll-to-article">
+  <p>Latests thoughts</p>
+
+  <div class="articles isNot" v-for="article in articles">
+    <div v-on:click="readArticle(article.slug, articlesLentgh - $index, $event)" class="article article-container">
+      <div class="bg-article" style="background: url({{ article.featured_image.source }}) center center; background-size: cover;"></div>
+
+      <div class="resume-article">
+        <p class="number-article">
+          <span v-if="articlesLentgh - $index < 10">0</span>{{ articlesLentgh - $index }}
+        </p>
+        <p class="date-article">{{ article.date | moment "MMM DD, YYYY" }}</p>
+        <h5>{{{ article.title }}}</h5>
+
+        <p class="text-resume-article">{{{ article.content }}}</p>
+      </div>
+    </div>
+  </div>
+</div>

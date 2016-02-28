@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 69 74" enable-background="new 0 0 69 74" xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="69" height="74"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_2_)" d="M57,24c6.6,0,12-5.4,12-12S63.6,0,57,0S45,5.4,45,12c0,1.2,0.2,2.4,0.5,3.5L21.6,29.9
+		C19.5,26.9,16,25,12,25C5.4,25,0,30.4,0,37s5.4,12,12,12c4,0,7.5-1.9,9.6-4.9l23.9,14.3C45.2,59.6,45,60.8,45,62
+		c0,6.6,5.4,12,12,12s12-5.4,12-12s-5.4-12-12-12c-4,0-7.5,1.9-9.6,4.9L23.5,40.5c0.3-1.1,0.5-2.3,0.5-3.5s-0.2-2.4-0.5-3.5
+		l23.9-14.3C49.5,22.1,53,24,57,24 M57,54c4.4,0,8,3.6,8,8s-3.6,8-8,8s-8-3.6-8-8S52.6,54,57,54 M12,45c-4.4,0-8-3.6-8-8s3.6-8,8-8
+		s8,3.6,8,8S16.4,45,12,45 M57,4c4.4,0,8,3.6,8,8c0,4.4-3.6,8-8,8s-8-3.6-8-8C49,7.6,52.6,4,57,4"/>
+</g>
+</svg>

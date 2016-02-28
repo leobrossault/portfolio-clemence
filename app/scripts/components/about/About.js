@@ -38,44 +38,48 @@ let About = Vue.extend({
     },
     methods: {
       parallax: function () {
-        let elementA = document.getElementById('parallax-el-first'),
-            elementB = document.getElementById('parallax-el-second'),
-            elementC = document.getElementById('parallax-el-third'),
-            elementD = document.getElementById('parallax-el-fourth'),
-            header = document.getElementById('header');
+        let about = document.querySelectorAll('.about');
 
-        let offsetHeader = header.getBoundingClientRect();
+        if (about.length > 0) {
+          let elementA = document.getElementById('parallax-el-first'),
+              elementB = document.getElementById('parallax-el-second'),
+              elementC = document.getElementById('parallax-el-third'),
+              elementD = document.getElementById('parallax-el-fourth'),
+              header = document.getElementById('header');
 
-        let translationA = elementA.getAttribute('data-translation'),
-            translationB = elementB.getAttribute('data-translation'),
-            translationC = elementC.getAttribute('data-translation'),
-            translationD = elementD.getAttribute('data-translation');
+          let offsetHeader = header.getBoundingClientRect();
 
-        if (- offsetHeader.top > this.scrollDif) {
-          translationA = parseInt(translationA) - 2;
-          translationB = parseInt(translationB) - 3;
-          translationC = parseInt(translationC) - 1.5;
-          translationD = parseInt(translationD) - 5;
-        } else if (- offsetHeader.top < this.scrollDif) {
-          translationA = parseInt(translationA) + 2;
-          translationB = parseInt(translationB) + 3;
-          translationC = parseInt(translationC) + 1.5;
-          translationD = parseInt(translationD) + 5;
-        }
+          let translationA = elementA.getAttribute('data-translation'),
+              translationB = elementB.getAttribute('data-translation'),
+              translationC = elementC.getAttribute('data-translation'),
+              translationD = elementD.getAttribute('data-translation');
 
-        elementA.setAttribute('data-translation', translationA);
-        elementA.style.transform = 'translateY('+ translationA +'px)';
+          if (- offsetHeader.top > this.scrollDif) {
+            translationA = parseInt(translationA) - 2;
+            translationB = parseInt(translationB) - 3;
+            translationC = parseInt(translationC) - 1.5;
+            translationD = parseInt(translationD) - 5;
+          } else if (- offsetHeader.top < this.scrollDif) {
+            translationA = parseInt(translationA) + 2;
+            translationB = parseInt(translationB) + 3;
+            translationC = parseInt(translationC) + 1.5;
+            translationD = parseInt(translationD) + 5;
+          }
 
-        elementB.setAttribute('data-translation', translationB);
-        elementB.style.transform = 'translateY('+ translationB +'px)';
+          elementA.setAttribute('data-translation', translationA);
+          elementA.style.transform = 'translateY('+ translationA +'px)';
 
-        elementC.setAttribute('data-translation', translationC);
-        elementC.style.transform = 'translateY('+ translationC +'px)';
+          elementB.setAttribute('data-translation', translationB);
+          elementB.style.transform = 'translateY('+ translationB +'px)';
 
-        elementD.setAttribute('data-translation', translationD);
-        elementD.style.transform = 'translateY('+ translationD +'px)';
+          elementC.setAttribute('data-translation', translationC);
+          elementC.style.transform = 'translateY('+ translationC +'px)';
 
-        this.scrollDif = - offsetHeader.top;
+          elementD.setAttribute('data-translation', translationD);
+          elementD.style.transform = 'translateY('+ translationD +'px)';
+
+          this.scrollDif = - offsetHeader.top;
+        }  
       }
     }
 });

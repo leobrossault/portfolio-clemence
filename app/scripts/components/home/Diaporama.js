@@ -16,7 +16,7 @@ let Diaporama = Vue.extend({
   },
   data: function () {
     let Httpreq = new XMLHttpRequest(),
-        url = Const.urlSite + 'portfolio-clemence/wordpress/wp-json/posts?filter[orderby]=menu_order&filter[order]=ASC';
+        url = Const.urlSite + 'portfolio-clemence/wordpress/wp-json/posts?filter[category_name]=projects&filter[orderby]=menu_order&filter[order]=ASC';
 
     Httpreq.open('GET', url, false);
     Httpreq.send(null);
@@ -170,7 +170,6 @@ let Diaporama = Vue.extend({
         }
       }
 
-      console.log(translation);
       projectsContainer.style.transform = 'translateX(' + translation + 'px)';
     },
     moveDiapo: function (direction, nb) {

@@ -1,0 +1,51 @@
+<div class="article-home" style="background: url({{ article.meta.article_main_img.url }}) center center; background-size: cover;">
+  <div class="article-home-center">
+    <div class="borders">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <h3>Blog</h3>
+
+    <div class="article-intro">
+      <p>{{ articleNumber }}</p>
+      <p>{{{ article.title }}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="article-content">
+  <div class="article-first-part">
+    <p class="date-article">{{ article.date | moment "MMM DD, YYYY" }}</p>
+
+    <p class="first-text">{{{ article.meta.article_main_text }}}</p>
+  </div>
+
+  {{#if article.meta.article_second_img}}<img v-bind:src="article.meta.article_second_img.url" alt="{{ article.meta.article_second_img.title }}" class="img-middle-article isNot">{{/if}}
+
+  <div class="article-second-part">
+    <p class="second-text">{{{ article.meta.article_second_text }}}</p>
+  </div>
+<!-- 
+  <div class="share">
+    <a href="#">
+      <img src="./assets/img/share.svg" alt="Share this article">
+      <span>SHARE</span>
+    </a>
+  </div>
+
+  <div class="comment-section">
+    <div class="comment-form">
+      <form method="post">
+        <p>Leave a comment</p>
+
+        <input class="input-text" type="text" v-model="author" name="name" placeholder="Name">
+        <input class="input-text" type="email" v-model="author_mail" name="mail" placeholder="Email">
+        <textarea v-model="content" name="comment" placeholder="Comment"></textarea>
+        <input type="submit" value="Post comment">
+      </form>
+    </div>
+  </div> -->
+</div>

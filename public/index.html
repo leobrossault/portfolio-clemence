@@ -60,10 +60,9 @@
 								</span>
 
 								<ul>
-									<li><a v-link="{path: '/'}">Projects</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a v-link="{path: 'about'}">About</a></li>
-									<li><a href="#">Contact</a></li>
+									<li><a v-link="{path: '/', exact: true}">Projects</a></li>
+									<li><a v-link="{path: '/blog', exact: true}">Blog</a></li>
+									<li><a v-link="{path: '/about', exact: true}">About</a></li>
 								</ul>
 							</div>
 						</div>

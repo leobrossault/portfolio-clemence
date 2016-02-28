@@ -1,0 +1,410 @@
+.blog-home {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 450px;
+  animation: appearBlog 0.6s ease-in-out forwards;
+
+  &.leave-blog {
+    opacity: 1;
+    animation: leaveBlog 0.6s 0.6s ease-in-out forwards;
+
+    .blog-home-center {
+      .borders {
+        span {
+          &:first-child {
+            max-height: 100%;
+            animation: spanLeftLeave 0.3s 0.4s ease-in-out forwards;
+          }
+
+          &:nth-child(2) {
+            max-width: 100%;
+            animation: spanTopLeave 0.3s 0.4s ease-in-out forwards;
+          }
+
+          &:nth-child(3) {
+            max-height: 100%;
+            animation: spanRightLeave 0.3s 0.7s ease-in-out forwards;
+          }
+
+          &:last-child {
+            max-width: 100%;
+            animation: spanBottomLeave 0.3s 0.7s ease-in-out forwards;
+          }
+        }
+      }
+    }
+
+    & + #see-articles {
+      opacity: 0;
+    }
+
+    & + #see-articles + .blog {
+      animation: leaveBlogArticles 0.6s 0.6s ease-in-out forwards;
+    }
+  }
+
+  .blog-home-center {
+    width: 60%;
+    margin: auto;
+    height: 320px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    top: -25px;
+
+    h3 {
+      margin: 0;
+      font-family: $mainFont, 'Arial';
+      font-weight: 900;
+      font-size: 32px;
+      margin: 0 0 8px 0;
+      padding-right: 30px;
+      color: #222222;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      z-index: 15;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: titleAbout 0.4s 1s ease-in-out forwards;
+    }
+
+    .borders {
+      position: absolute;
+      left: 2px;
+      top: 25px;
+      width: 100%;
+      height: 100%;
+
+      span {
+        position: absolute;
+        background: #323232;
+
+        &:first-child,
+        &:nth-child(2) {
+          transition: all 0.6s 0.6s ease-in-out;
+        }
+
+        &:nth-child(3),
+        &:last-child {
+          transition: all 0.4s 1.2s ease-in-out;
+        }
+
+        &:first-child {
+          left: 0;
+          height: 90%;
+          width: 2px;
+          bottom: 0;
+          max-height: 0;
+          animation: spanLeft 0.6s 1.2s ease-in-out forwards;
+        }
+
+        &:nth-child(2) {
+          right: 0;
+          height: 2px;
+          width: 80%;
+          top: 0;
+          max-width: 0;
+          animation: spanTop 0.6s 1.2s ease-in-out forwards;
+        }
+
+        &:nth-child(3) {
+          right: 0;
+          bottom: 0;
+          width: 2px;
+          height: 100%;
+          max-height: 0;
+          animation: spanRight 0.6s 0.6s ease-in-out forwards;
+        }
+
+        &:last-child {
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 2px;
+          max-width: 0;
+          animation: spanBottom 0.6s 0.6s ease-in-out forwards;
+        }
+      }
+    }
+
+    .blog-intro {
+      width: 100%;
+      position: relative;
+      top: 10px;
+
+      p {
+        display: block;
+        text-align: center;
+
+        &:first-child {
+          font-family: $mainFont;
+          font-weight: 100;
+          font-size: 60px;
+          letter-spacing: 0.12em;
+          line-height: 1;
+          margin-bottom: 10px;
+        }
+
+        &:last-child {
+          font-family: $secondFont;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: calc((100% - 320px) / 2 + 15px);
+    width: 2px;
+    left: calc(50% - 1px);
+    background: #323232;
+    top: calc((100% - 320px) / 2 + 320px);
+    max-height: 0;
+    animation: linkBlog 0.4s 1.8s ease-in-out forwards;
+  }
+}
+
+#see-articles {
+  display: block;
+  width: 200px;
+  border: 2px solid #323232;
+  color: #323232;
+  text-decoration: none;
+  font-family: $mainFont;
+  font-size: 15px;
+  margin: 15px auto 0;
+  text-align: center;
+  padding: 6px 0;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background: #323232;
+    color: #fff;
+  }
+}
+
+
+.blog {
+  width: 100%;
+  margin-top: 50px;
+  max-height: 0;
+  overflow: hidden;
+
+  &.leave-blog-article {
+    animation: leaveBlog 0.6s 0.6s ease-in-out forwards;
+  }
+
+  > p:first-child {
+    text-align: center;
+    font-family: $secondFont;
+    color: #222222;
+    font-size: 50px;
+    opacity: 0;
+    margin-bottom: 50px;
+    transform: translateY(-15px);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .articles:last-child .article::after {
+    display: none;
+  }
+
+  .articles {
+    opacity: 0;
+    cursor: pointer;
+    transform: translateY(20px);
+    transition: all 0.8s ease-in-out;
+
+    &.isIt {
+      opacity: 1;
+      transform: translateY(0);
+
+      .article {
+        &::after {
+          max-height: calc(10% + 100px);
+        }
+      }
+    }
+  }
+
+  .article {
+    width: 90%;
+    height: 400px;
+    margin: 0 auto 100px;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    transition: width 0.5s ease-in-out, transform 1s 0.5s ease-in-out, opacity 1s 0.5s ease-in-out;
+
+    &.read-this {
+      width: 100%;
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: calc(10% + 100px);
+      left: calc(50% - 1px);
+      top: 95%;
+      background: #323232;
+      max-height: 0;
+      transition: all 0.4s 1s ease-in-out;
+    }
+
+    .bg-article {
+      position: absolute;
+      left: 0;
+      top: 5%;
+      width: 100%;
+      height: 90%;
+      z-index: 1;
+    }
+
+    .resume-article {
+      position: relative;
+      z-index: 2;
+      width: 70%;
+      margin: auto;
+      background: rgba(#fafafa, 0.9);
+      height: 100%;
+      padding: 35px 0;
+
+      .number-article {
+        text-align: center;
+        color: #222222;
+        font-size: 50px;
+        font-family: $mainFont;
+        font-weight: 100;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+
+        &::after {
+          content: "";
+          width: 20px;
+          margin: auto;
+          display: block;
+          background: #d17373;
+          height: 2px;
+        }
+      }
+
+      .date-article {
+        color: $textColor;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: $mainFont;
+        font-weight: 400;
+        font-size: 12px;
+      }
+
+      h5 {
+        text-align: center;
+        font-family: $secondFont;
+        color: #222222;
+        font-size: 23px;
+        margin: 20px 0;
+        font-weight: 100;
+        padding: 0 15px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .text-resume-article {
+        padding: 0 5%;
+        color: $textColor;
+        font-family: $secondFont;
+        font-size: 15px;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: 100px;
+
+        p {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &.show-article {
+    max-height: inherit;
+
+    > p:first-child {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// ANIMATIONS
+// COME
+@keyframes appearBlog {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+// LEAVE
+@keyframes leaveBlog {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes leaveBlogArticles {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes linkBlog {
+  100% {
+    max-height: calc((100% - 320px) / 2 + 15px);
+  }
+}
+
+// RESPONSIVE
+
+@media screen and (max-width: 480px) {
+  body .blog-home .blog-home-center {
+    width: 80%;
+  }
+
+  body .blog-home .blog-home-center .borders span:nth-child(2) {
+    width: 60%;
+  }
+
+  body #see-articles {
+    margin-bottom: 25px;
+  }
+}
