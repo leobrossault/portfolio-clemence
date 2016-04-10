@@ -66,11 +66,12 @@ h1 {
             position: absolute;
             left: 0;
             opacity: 0;
+            transition: all 0.4s ease-in-out;
 
             @for $i from 1 through 3 {
               &:nth-child(#{$i}) {
                 animation: burgerAnim 0.4s $i * 0.1s + 1.5s cubic-bezier(0.56, 0.28, 0.46, 1.17) forwards;
-                transition: all 0.2s $i * 0.1s ease-in-out;
+                // transition: all 0.2s $i * 0.1s ease-in-out;
               }
             }
 
@@ -84,12 +85,20 @@ h1 {
 
             &:last-child {
               bottom: 0;
+              max-width: 30%;
             }
           }
 
           &:hover {
             span {
-              max-width: 110%;
+              &:first-child {
+                // max-width: 30%;
+              }
+
+              &:last-child {
+                bottom: 0;
+                max-width: 100%;
+              }
             }
           }
         }
@@ -326,7 +335,7 @@ h1 {
     left: 0;
     width: 100%;
     z-index: 10;
-    transition: all 0.4s 1s ease-in-out;
+    transition: all 0.4s 1s cubic-bezier(0.19, 1, 0.22, 1);
     background: #fff;
     height: 100%;
 
@@ -344,7 +353,7 @@ h1 {
     }
 
     #burger-menu-close {
-      margin-right: 15px;
+      margin-right: 8%;
       height: 21px;
       width: 30px;
       position: relative;

@@ -2,7 +2,7 @@
 
 // all constants
 var Const = {
-	urlSite: 'http://localhost:8888/'
+	urlSite: 'http://clemence-taillez.fr/'
 };
 
 module.exports = Const;

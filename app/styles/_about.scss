@@ -208,11 +208,16 @@
         margin: 40px 0;
         justify-content: center;
 
-        span {
+        a {
           display: block;
           width: 40px;
           height: 40px;
-          border: 2px solid #0090dc;
+
+          img {
+            max-width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+          }
 
           &:nth-child(2) {
             margin: 0 14%;

@@ -14,9 +14,9 @@ let Diaporama = Vue.extend({
     xDown: null,
     yDown: null
   },
-  data: function () {
+  data () {
     let Httpreq = new XMLHttpRequest(),
-        url = Const.urlSite + 'portfolio-clemence/wordpress/wp-json/posts?filter[category_name]=projects&filter[orderby]=menu_order&filter[order]=ASC';
+        url = Const.urlSite + 'wordpress/wp-json/posts?filter[category_name]=projects&filter[orderby]=menu_order&filter[order]=ASC';
 
     Httpreq.open('GET', url, false);
     Httpreq.send(null);
@@ -26,12 +26,12 @@ let Diaporama = Vue.extend({
   events: {
     'resize': 'onResize'
   },
-  ready: function () {
+  ready () {
     this.index = 1;
     this.buildDiaporama ();
   },
   methods: {
-    buildDiaporama: function () {
+    buildDiaporama () {
       // Build diaporama
       let projects = document.querySelectorAll('.project-home'),
           projectsContainer = document.querySelector('.diapo-overflow'),
@@ -76,18 +76,18 @@ let Diaporama = Vue.extend({
       navContainer.style.width = navContainerWidth + 'px';
       currentNav.classList.add('current');
     },
-    basicNav: function (e) {
+    basicNav (e) {
       if (e.target.parentNode.parentNode.parentNode.classList.contains('prev-current')) {
         this.prevProject();
       } else if (e.target.parentNode.parentNode.parentNode.classList.contains('next-current')) {
         this.nextProject();
       }
     },
-    handleTouchStart(e) {
+    handleTouchStart (e) {
       this.xDown = e.touches[0].clientX;
       this.yDown = e.touches[0].clientY;
     },
-    handleTouchMove: function (e) {
+    handleTouchMove (e) {
       if ( !this.xDown || !this.yDown ) {
         return;
       }
@@ -109,19 +109,19 @@ let Diaporama = Vue.extend({
       this.xDown = null;
       this.yDown = null;
     },
-    prevProject: function () {
+    prevProject () {
       if (this.index > 0) {
         this.index --;
         this.moveDiapo ('left', 1);
       }
     },
-    nextProject: function () {
+    nextProject () {
       if (this.index < this.object.length) {
         this.index ++;
         this.moveDiapo ('right', 1);
       }
     },
-    clickNav: function (e) {
+    clickNav (e) {
       let dotNav = document.querySelectorAll('.dot-nav'),
           oldCurrent,
           newCurrent,
@@ -172,7 +172,7 @@ let Diaporama = Vue.extend({
 
       projectsContainer.style.transform = 'translateX(' + translation + 'px)';
     },
-    moveDiapo: function (direction, nb) {
+    moveDiapo (direction, nb) {
       let projectsContainer = document.querySelector('.diapo-overflow'),
           translation = projectsContainer.style.transform.substring(projectsContainer.style.transform.lastIndexOf("(")+1,projectsContainer.style.transform.lastIndexOf("px")),
           projects = document.querySelectorAll('.project-home'),
@@ -203,14 +203,14 @@ let Diaporama = Vue.extend({
 
       projectsContainer.style.transform = 'translateX(' + transformValue + 'px)';
     },
-    onResize: function(event) {
+    onResize (event) {
       if (this.index == undefined) {
         this.index = 1;
       }
 
       this.buildDiaporama();
     },
-    quitProject: function () {
+    quitProject () {
       let projectsContainer = document.querySelector('.diapo-overflow'),
           project = document.querySelector('.project');
       projectsContainer.classList.remove('project-page');
@@ -218,7 +218,7 @@ let Diaporama = Vue.extend({
 
       setTimeout(this.redirect , 500);
     },
-    redirect: function () {
+    redirect () {
       this.$route.router.go('/');
     }
   }

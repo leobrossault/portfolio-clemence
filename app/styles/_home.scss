@@ -90,7 +90,7 @@
 			left: 0;
 			top: 0;
 			height: 100%;
-			transition: all 1s cubic-bezier(0.56, 0.28, 0.46, 1.17);
+			transition: all 1.25s cubic-bezier(0.19, 1, 0.22, 1);
 
 			.project-home {
 				display: inline-block;
@@ -319,7 +319,7 @@
 									width: 200px;
 									height: 2px;
 									max-width: 0;
-									transition: all 0.4s 0.4s ease-in-out;
+									transition: all 0.3s 0.3s cubic-bezier(0.86, 0, 0.07, 1);
 								}
 
 								&:nth-child(2),
@@ -327,7 +327,7 @@
 									width: 2px;
 									height: 29px;
 									max-height: 0;
-									transition: all 0.4s ease-in-out;
+									transition: all 0.3s ease-in-out;
 								}
 							}
 						}
@@ -339,13 +339,13 @@
 								&:first-child,
 								&:nth-child(3) {
 									max-width: 200px;
-									transition: all 0.4s ease-in-out;
+									transition: all 0.3s ease-in-out;
 								}
 
 								&:nth-child(2),
 								&:last-child {
 									max-height: 29px;
-									transition: all 0.4s 0.4s ease-in-out;
+									transition: all 0.3s 0.3s cubic-bezier(0.86, 0, 0.07, 1);
 								}
 							}
 						}
@@ -365,12 +365,12 @@
 
 							&:first-child,
 							&:nth-child(2) {
-								transition: all 0.6s 0s ease-in-out;
+								transition: all 0.6s 0s ease-out;
 							}
 
 							&:nth-child(3),
 							&:last-child {
-								transition: all 0.4s 0.6s ease-in-out;
+								transition: all 0.4s 0.6s ease-out;
 							}
 
 							&:first-child {
@@ -426,12 +426,12 @@
 
 								&:first-child,
 								&:nth-child(2) {
-									transition: all 0.6s 1s ease-in-out;
+									transition: all 0.6s 1s cubic-bezier(0.19, 1, 0.22, 1);
 								}
 
 								&:nth-child(3),
 								&:last-child {
-									transition: all 0.2s 0.8s ease-in-out;
+									transition: all 0.2s 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 								}
 
 								&:first-child,
@@ -469,6 +469,11 @@
 							transition: all 0.4s 0.2s ease-in-out;
 						}
 					}
+
+					.project-home-center .project-home-content .project-bg {
+						transition: all 0.4s ease-in-out;
+						transform: translateX(10px);
+					}
 				}
 
 				&.next-current:hover {
@@ -480,6 +485,11 @@
 							max-width: 100%;
 							transition: all 0.4s 0.2s ease-in-out;
 						}
+					}
+
+					.project-home-center .project-home-content .project-bg {
+						transition: all 0.4s ease-in-out;
+						transform: translateX(-10px);
 					}
 				}
 			}

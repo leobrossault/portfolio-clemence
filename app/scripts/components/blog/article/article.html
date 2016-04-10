@@ -14,6 +14,10 @@
       <p>{{{ article.title }}}</p>
     </div>
   </div>
+
+  <a v-on:click="quitArticle" id="close-article">
+    <span></span>
+  </a>
 </div>
 
 <div class="article-content">
@@ -28,7 +32,7 @@
   <div class="article-second-part">
     <p class="second-text">{{{ article.meta.article_second_text }}}</p>
   </div>
-<!-- 
+
   <div class="share">
     <a href="#">
       <img src="./assets/img/share.svg" alt="Share this article">
@@ -42,10 +46,10 @@
         <p>Leave a comment</p>
 
         <input class="input-text" type="text" v-model="author" name="name" placeholder="Name">
-        <input class="input-text" type="email" v-model="author_mail" name="mail" placeholder="Email">
+        <input class="input-text" type="email" v-model="author_email" name="mail" placeholder="Email">
         <textarea v-model="content" name="comment" placeholder="Comment"></textarea>
-        <input type="submit" value="Post comment">
+        <span id="submit-form" v-on:click="postComment">Post comment</span>
       </form>
     </div>
-  </div> -->
+  </div>
 </div>

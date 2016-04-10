@@ -7,6 +7,11 @@
   min-height: 450px;
   animation: appearBlog 0.6s ease-in-out forwards;
 
+  &.leave-blog-read {
+    opacity: 1;
+    animation: leaveBlog 0.4s ease-in-out forwards;
+  }
+
   &.leave-blog {
     opacity: 1;
     animation: leaveBlog 0.6s 0.6s ease-in-out forwards;
@@ -195,11 +200,11 @@
 .blog {
   width: 100%;
   margin-top: 50px;
-  max-height: 0;
-  overflow: hidden;
+  transition: opacity 0.6s ease-in-out;
 
   &.leave-blog-article {
-    animation: leaveBlog 0.6s 0.6s ease-in-out forwards;
+    // animation: leaveBlog 0.6s 0.6s ease-in-out forwards;
+    opacity: 0;
   }
 
   > p:first-child {
@@ -222,6 +227,10 @@
     cursor: pointer;
     transform: translateY(20px);
     transition: all 0.8s ease-in-out;
+
+    &:nth-child(6n+1) {
+      animation: animMoreArticle 0.8s ease-in-out forwards;
+    }
 
     &.isIt {
       opacity: 1;
@@ -246,8 +255,8 @@
 
     &.read-this {
       width: 100%;
-      transform: translateX(100%);
-      opacity: 0;
+      // transform: translateX(100%);
+      // opacity: 0;
     }
 
     &::after {
@@ -352,6 +361,31 @@
   }
 }
 
+.more-article {
+  display: block;
+  width: 200px;
+  border: 2px solid #323232;
+  color: #323232;
+  text-decoration: none;
+  font-family: $mainFont;
+  font-size: 15px;
+  margin: 15px auto 0;
+  text-align: center;
+  padding: 6px 0;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background: #323232;
+    color: #fff;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
 // ANIMATIONS
 // COME
 @keyframes appearBlog {
@@ -384,6 +418,13 @@
   100% {
     transform: translateY(30px);
     opacity: 0;
+  }
+}
+
+@keyframes animMoreArticle {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

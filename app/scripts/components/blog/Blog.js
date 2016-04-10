@@ -7,17 +7,19 @@ let Blog = Vue.extend({
     template: require('./blog.html'),
     state: {
       object: '',
+      objectShowed: '',
+      nbObjectShowed: 0,
       page: '',
       articlesLentgh: 0,
       url: ''
     },
     route: {
-      data: function (transition) {
+      data (transition) {
         let name = transition.to.params.projectName;
         let HttpreqArticle = new XMLHttpRequest(),
             HttpreqBlog = new XMLHttpRequest(),
-            urlBlog = Const.urlSite + 'portfolio-clemence/wordpress/wp-json/pages?filter[s]=blog',
-            urlArticle = Const.urlSite + 'portfolio-clemence/wordpress/wp-json/posts?filter[category_name]=articles&filter[orderby]=date&filter[order]=DESC';
+            urlBlog = Const.urlSite + 'wordpress/wp-json/pages?filter[s]=blog',
+            urlArticle = Const.urlSite + 'wordpress/wp-json/posts?filter[category_name]=articles&filter[orderby]=date&filter[order]=DESC';
 
         HttpreqBlog.open('GET', urlBlog, false);
         HttpreqBlog.send(null);
@@ -28,22 +30,35 @@ let Blog = Vue.extend({
         this.object = JSON.parse(HttpreqArticle.responseText);
 
         this.articlesLentgh = this.object.length;
+        this.nbObjectShowed = 5;
+        this.objectShowed = [];
+
+        for (let i = 0; i < this.nbObjectShowed; i ++) {
+          if (this.object[i] != null) {
+            this.objectShowed.push(this.object[i]);
+          }
+        }
 
         if (this.articlesLentgh < 10) {
           this.articlesLentgh = '0' + this.articlesLentgh;
         }
 
+        if (this.nbObjectShowed > this.object.length) {
+          let btnMore = document.querySelectorAll('.more-article');
+          btnMore[0].classList.add('hide');
+        }
+
         return {
-          articles: this.object,
+          articles: this.objectShowed,
           numberArticle: this.articlesLentgh,
           blog: this.page
         }
       },
-      activate: function () {
+      activate () {
         let menuBlog = document.querySelector('.open-menu li:nth-child(2) a');
         menuBlog.classList.add('active');
       },
-      canDeactivate: function (transition) {
+      canDeactivate (transition) {
         let blog = document.querySelector('.blog-home'),
             menuBlog = document.querySelector('.open-menu li:nth-child(2) a');
         blog.classList.add('leave-blog');
@@ -52,11 +67,11 @@ let Blog = Vue.extend({
         setTimeout(transition.next, 1500);
       }
     },
-    ready: function () {
+    ready () {
       window.addEventListener('scroll', this.isInViewPort);
     },
     methods: {
-      seeArticles: function () {
+      seeArticles () {
         let articleContainer = document.querySelectorAll('.blog'),
             elScroll = document.getElementById('scroll-to-article').getBoundingClientRect(),
             posY = elScroll.top;
@@ -71,7 +86,21 @@ let Blog = Vue.extend({
 
         articleContainer[0].classList.add('show-article');
       },
-      readArticle: function (name, number, e) {
+      readMoreArticle () {
+        this.nbObjectShowed += 5;
+
+        for (let i = this.nbObjectShowed - 5; i < this.nbObjectShowed; i ++) {
+          if (this.object[i] != null) {
+            this.objectShowed.push(this.object[i]);
+          }
+        }
+
+        if (this.nbObjectShowed > this.object.length) {
+          let btnMore = document.querySelectorAll('.more-article');
+          btnMore[0].classList.add('hide');
+        }
+      },
+      readArticle (name, number, e) {
         if (e.target.parentNode.parentNode.parentNode.classList.contains('article-container')) {
           e.target.parentNode.parentNode.parentNode.classList.add('read-this');
         }
@@ -95,24 +124,24 @@ let Blog = Vue.extend({
               blogHome = document.querySelectorAll('.blog-home');
 
           blogArticle[0].classList.add('leave-blog-article');
-          blogHome[0].classList.add('leave-blog');
-        }, 800);
+          blogHome[0].classList.add('leave-blog-read');
+        }, 500);
 
-        setTimeout(this.redirectArticle, 1000);
+        setTimeout(this.redirectArticle, 800);
       },
-      redirectArticle: function () {
+      redirectArticle () {
         let fullUrl = '/article/' + this.url;
         this.$route.router.go(fullUrl);
 
         let timerID = setInterval(function() {
-            window.scrollBy(0, -10);
+            window.scrollBy(0, -15);
 
             if(window.pageYOffset <= 0) {
               clearInterval(timerID);
             }
         }, 1);
       },
-      isInViewPort: function () {
+      isInViewPort () {
         let scrollTop = document.body.scrollTop,
             viewportHeight = window.innerHeight,
             isNot = document.querySelectorAll('.isNot');

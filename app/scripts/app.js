@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueMoment from 'vue-moment';
+import VueResource from 'vue-resource';
 import Header from './utils/Header';
 
 import Home from './components/home/Home';
@@ -13,12 +14,15 @@ import Article from './components/blog/article/Article';
 
 Vue.use(VueRouter);
 Vue.use(VueMoment);
+Vue.use(VueResource);
 
 let App = Vue.extend({}),
     router = new VueRouter({
       history: false,
       root: '/'
     });
+
+Vue.http.options.xhr = {withCredentials: true};
 
 // Routing
 

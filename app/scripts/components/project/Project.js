@@ -9,10 +9,10 @@ let Project = Vue.extend({
       project: ''
     },
     route: {
-      data: function (transition) {
+      data (transition) {
         let name = transition.to.params.projectName;
         let Httpreq = new XMLHttpRequest(),
-            url = Const.urlSite + 'portfolio-clemence/wordpress/wp-json/posts?filter[s]='+ name;
+            url = Const.urlSite + 'wordpress/wp-json/posts?filter[s]='+ name;
 
         Httpreq.open('GET', url, false);
         Httpreq.send(null);
@@ -21,14 +21,14 @@ let Project = Vue.extend({
         return {inProject: this.project}
       }
     },
-    ready: function () {
+    ready () {
       let container = document.querySelectorAll('.diapo-overflow');
       container[0].classList.add('project-page');
 
       window.addEventListener('scroll', this.isInViewPort);
     },
     methods: {
-      isInViewPort: function () {
+      isInViewPort () {
         let scrollTop = document.body.scrollTop,
             viewportHeight = window.innerHeight,
             isNot = document.querySelectorAll('.isNot');

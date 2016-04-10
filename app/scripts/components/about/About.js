@@ -12,7 +12,7 @@ let About = Vue.extend({
     route: {
       data: function () {
         let Httpreq = new XMLHttpRequest(),
-            url = Const.urlSite + 'portfolio-clemence/wordpress/wp-json/pages?filter[s]=about';
+            url = Const.urlSite + 'wordpress/wp-json/pages?filter[s]=about';
 
         Httpreq.open('GET', url, false);
         Httpreq.send(null);
@@ -79,7 +79,7 @@ let About = Vue.extend({
           elementD.style.transform = 'translateY('+ translationD +'px)';
 
           this.scrollDif = - offsetHeader.top;
-        }  
+        }
       }
     }
 });
