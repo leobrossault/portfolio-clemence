@@ -37,13 +37,21 @@
 
     <p class="project-environment">{{ inProject.meta.project_environment }}</p>
 
-    <a href="{{ inProject.meta.project_external_link }}" target="_blank" class="project-link">Voir le site</a>
+    <a href="{{ inProject.meta.project_external_link }}" target="_blank" class="project-link">
+      <span class="see-border-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      Voir le site
+    </a>
 
     <p class="project-copyright">All works Copyright © 2016 Clémence Taillez</p>
   </div>
 
   <div class="next-project isNot">
-    <a href="#" style="background: {{ inProject.meta.next_project_color }};">
+    <a v-link="{path: '/project/' + inProject.meta.next_project_url, exact: true}" style="background: {{ inProject.meta.next_project_color }};">
       <span class="border-next-project">
         <span class="top-border-next-project"></span>
         <span class="top-border-next-project"></span>

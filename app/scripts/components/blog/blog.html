@@ -1,4 +1,4 @@
-<div class="blog-home" style="background: url({{ blog.featured_image.source }}) center center; background-size: cover;">
+<div class="blog-home" style="background: url({{ blog.featured_image.source }}) center center no-repeat; background-size: cover;">
   <div class="blog-home-center">
     <div class="borders">
       <span></span>
@@ -16,14 +16,16 @@
   </div>
 </div>
 
-<span id="see-articles" v-on:click="seeArticles">Voir les articles</span>
+<span id="see-articles" v-on:click="seeArticles">Show me</span>
 
 <div class="blog" id="scroll-to-article">
   <p>Latests thoughts</p>
 
   <div class="articles isNot" v-for="article in articles">
     <div v-on:click="readArticle(article.slug, articlesLentgh - $index, $event)" class="article article-container">
-      <div class="bg-article" style="background: url({{ article.featured_image.source }}) center center; background-size: cover;"></div>
+      <div class="bg-article">
+        <div style="background: url({{ article.featured_image.source }}) center center; background-size: cover;"></div>
+      </div>
 
       <div class="resume-article">
         <p class="number-article">
@@ -38,4 +40,4 @@
   </div>
 </div>
 
-<span class="more-article" v-on:click="readMoreArticle">Voir plus</span>
+<span class="more-article" v-on:click="readMoreArticle">Show more</span>

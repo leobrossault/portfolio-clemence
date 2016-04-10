@@ -67,6 +67,7 @@
 .project {
   width: 100%;
   margin-top: -15%;
+  background: #fff;
   transition: all 0.4s ease-in-out;
 
   &.leave-project {
@@ -83,7 +84,7 @@
     margin: auto;
     background: #fff;
     padding: 60px 8% 100px 8%;
-    animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation: bottomToTopSection 1s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 
     h4, p {
       text-align: center;
@@ -93,12 +94,12 @@
     h4 {
       font-family: $mainFont;
       font-weight: 700;
-      font-size: 25px;
+      font-size: 35px;
       letter-spacing: 0.08em;
       color: $textColor;
       position: relative;
       opacity: 0;
-      animation: bottomToTopSection 0.8s 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: bottomToTopSection 0.8s 0.8s ease-in-out forwards;
 
       &::after {
         content: "";
@@ -117,7 +118,7 @@
       font-size: 14px;
       margin: 10px 0 20px;
       opacity: 0;
-      animation: bottomToTopSection 0.8s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: bottomToTopSection 0.8s 1s ease-in-out forwards;
     }
 
     .project-description p {
@@ -127,13 +128,13 @@
       font-size: 18px;
       line-height: 1.6;
       opacity: 0;
-      animation: bottomToTopSection 0.8s 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: bottomToTopSection 0.8s 1.2s ease-in-out forwards;
     }
   }
 
   .section-main-img {
     &.isIt {
-      animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: bottomToTopSection 1s ease-in-out forwards;
     }
 
     img {
@@ -156,7 +157,7 @@
       opacity: 0;
 
       &.isIt {
-        animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation: bottomToTopSection 1s ease-in-out forwards;
       }
     }
   }
@@ -168,7 +169,7 @@
     background: #fff;
 
     &.isIt {
-      animation: bottomToTopSection 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: bottomToTopSection 1s ease-in-out forwards;
     }
 
     h5 {
@@ -181,7 +182,7 @@
       text-align: center;
       position: relative;
       opacity: 0;
-      animation: bottomToTopSection 0.8s 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation: bottomToTopSection 0.8s 0.8s ease-in-out forwards;
 
       &::after {
         content: "";
@@ -195,8 +196,8 @@
 
     .credit-da,
     .credit-dev {
-      display: flex;
-      flex-grow: 1;
+      // display: flex;
+      // flex-grow: 1;
 
       p {
         margin: 0;
@@ -204,6 +205,7 @@
         font-size: 18px;
         font-family: $secondFont;
         line-height: 1.6;
+        display: inline-block;
 
         &:last-child {
           padding-left: 5px;
@@ -235,10 +237,74 @@
       text-decoration: none;
       letter-spacing: 0.08em;
       transition: all 0.4s ease-in-out;
+      position: relative;
+
+      > span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
+        span {
+          position: absolute;
+
+          &:first-child {
+            top: 3px;
+            left: 3px;
+          }
+
+          &:nth-child(2) {
+            left: 3px;
+            top: 3px;
+          }
+
+          &:nth-child(3) {
+            bottom: 3px;
+            right: 3px;
+          }
+
+          &:last-child {
+            bottom: 3px;
+            right: 3px;
+          }
+
+          &:first-child,
+          &:nth-child(3) {
+            width: 200px;
+            height: 2px;
+            max-width: 0;
+            transition: all 0.3s 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+          }
+
+          &:nth-child(2),
+          &:last-child {
+            width: 2px;
+            height: 32px;
+            max-height: 0;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+      }
 
       &:hover {
-        background: #222222;
-        color: #fff;
+        color: #222222;
+
+        > span span {
+          background: #222222;
+
+          &:first-child,
+          &:nth-child(3) {
+            max-width: 140px;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:nth-child(2),
+          &:last-child {
+            max-height: 32px;
+            transition: all 0.3s 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+          }
+        }
       }
     }
 
@@ -262,17 +328,17 @@
       a .border-next-project {
         .top-border-next-project {
           max-width: 45%;
-          transition: all 0.6s ease-in-out;
+          transition: all 0.3s ease-in-out;
         }
 
         .side-border-next-project {
           max-height: 130px;
-          transition: all 0.6s 0.6s ease-in-out;
+          transition: all 0.3s 0.3s ease-in-out;
         }
 
         .bottom-border-next-project {
           max-width: 50%;
-          transition: all 0.6s 1.2s ease-in-out;
+          transition: all 0.3s 0.6s ease-in-out;
         }
       }
     }
