@@ -6,7 +6,7 @@
 	opacity: 0;
 	animation: appearHome 0.6s ease-in-out forwards;
 	position: relative;
-	top: calc(50% - 350px);
+	top: calc(50% - 350px + 80px);
 
 	&.leave-home {
 		opacity: 1;
