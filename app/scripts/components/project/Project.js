@@ -6,7 +6,8 @@ import Const from '../../utils/Const';
 let Project = Vue.extend({
     template: require('./project.html'),
     state: {
-      project: ''
+      project: '',
+      projectCount: ''
     },
     route: {
       data (transition) {
@@ -22,11 +23,32 @@ let Project = Vue.extend({
       }
     },
     ready () {
-      let container = document.querySelectorAll('.diapo-overflow');
+      let container = document.querySelectorAll('.diapo-overflow'),
+          diapos = document.querySelectorAll('.diapo-container .project-home'),
+          currentDiapo = document.querySelectorAll('.project-home.current')[0];
+
       container[0].classList.add('project-page');
+      this.projectCount = diapos.length;
+
+      // Move diapo for direct link
+      for (let j = 0; j < diapos.length; j ++) {
+        for (let m = 0; m < diapos[j].classList.length; m ++) {
+          if (diapos[j].classList[m].indexOf(this.project.slug) > -1) {
+            if (this.indexInParent(currentDiapo) != j) {
+              let indexNav = j + 1,
+                  fixNav = document.querySelectorAll('.dot-nav:nth-child(' + indexNav + ')')[0];
+
+              if (fixNav.onclick) {
+                 fixNav.onclick();
+              } else if (fixNav.click) {
+                 fixNav.click();
+              }
+            }
+          }
+        }
+      }
 
       window.addEventListener('scroll', this.isInViewPort);
-      console.log(this.$parent);
     },
     methods: {
       isInViewPort () {
@@ -52,6 +74,7 @@ let Project = Vue.extend({
             sum = top - scrollTop + viewportHeight,
             project = document.querySelectorAll('.project')[0],
             link = document.querySelectorAll('.next-project a')[0].getAttribute('data-link'),
+            current = document.querySelectorAll('.project-home.current')[0],
             _this = this,
             diff;
 
@@ -70,7 +93,19 @@ let Project = Vue.extend({
 
         setTimeout(function () {
           scrollTo(0, 0);
-          _this.$parent.nextProject();
+          // nasty
+          if (_this.indexInParent(current) + 1 == _this.projectCount) {
+            let nav = document.querySelectorAll('.dot-nav:nth-child(1)')[0];
+
+            if (nav.onclick) {
+               nav.onclick();
+            } else if (nav.click) {
+               nav.click();
+            }
+          } else {
+            _this.$parent.$parent.$children[0].$children[0].nextProject();
+          }
+
           _this.initNextProject(link);
         }, 1200);
       },
@@ -89,16 +124,31 @@ let Project = Vue.extend({
         footer.classList.remove('go-to-next');
         project.classList.remove('go-to-next');
 
-        setTimeout (this.resetFooter, 1900);
+        setTimeout (this.resetFooter, 3000);
       },
       resetFooter () {
         let prepareFooter = document.querySelectorAll('.next-project-prepare')[0],
             project = document.querySelectorAll('.project')[0],
-            footer = document.querySelectorAll('.next-project')[0];
+            sectionCredits = document.querySelectorAll('.section-credits')[0],
+            footer = document.querySelectorAll('.next-project')[0],
+            tmpFooter= document.querySelectorAll('.home > .next-project')[0];
 
+        sectionCredits.parentNode.insertBefore(footer, sectionCredits.nextSibling);
+        footer.parentNode.insertBefore(prepareFooter, footer.nextSibling);
         prepareFooter.classList.remove('prepare');
         footer.style.height = '200px';
         footer.style.maxHeight = '200px';
+      },
+      indexInParent(node) {
+        let children = node.parentNode.childNodes,
+            num = 0;
+
+        for (let i=0; i<children.length; i++) {
+          if (children[i] == node) return num;
+          if (children[i].nodeType == 1) num++;
+        }
+
+        return -1;
       }
     }
 });
