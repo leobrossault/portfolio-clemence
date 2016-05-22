@@ -48,7 +48,12 @@
 
   <div class="nav">
     <div>
-      <span class="dot-nav {{ project.slug }}" v-for="project in projects" v-on:click="clickNav"></span>
+      <span class="dot-nav {{ project.slug }}" v-for="project in projects" v-on:click="clickNav">
+        <span class="label-nav">
+          <span class="label-nav-title">{{ project.title }}</span>
+          <span class="label-nav-type">{{ project.meta.project_type }}</span>
+        </span>
+      </span>
     </div>
   </div>
 

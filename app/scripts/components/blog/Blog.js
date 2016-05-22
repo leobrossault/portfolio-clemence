@@ -64,7 +64,7 @@ let Blog = Vue.extend({
         blog.classList.add('leave-blog');
         menuBlog.classList.remove('active');
 
-        setTimeout(transition.next, 1500);
+        setTimeout(transition.next, 800);
       }
     },
     ready () {
@@ -133,13 +133,13 @@ let Blog = Vue.extend({
         let fullUrl = '/article/' + this.url;
         this.$route.router.go(fullUrl);
 
-        let timerID = setInterval(function() {
-            window.scrollBy(0, -15);
-
-            if(window.pageYOffset <= 0) {
-              clearInterval(timerID);
-            }
-        }, 1);
+        // let timerID = setInterval(function() {
+        //     window.scrollBy(0, -15);
+        //
+        //     if(window.pageYOffset <= 0) {
+        //       clearInterval(timerID);
+        //     }
+        // }, 1);
       },
       isInViewPort () {
         let scrollTop = document.body.scrollTop,

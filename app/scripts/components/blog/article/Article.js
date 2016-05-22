@@ -31,6 +31,7 @@ let Article = Vue.extend({
         }
       },
       activate () {
+        scroll(0, 0);
         let menuBlog = document.querySelector('.open-menu li:nth-child(2) a');
         menuBlog.classList.add('active');
       },

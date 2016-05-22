@@ -218,7 +218,7 @@
 						font-size: 23px;
 						position: absolute;;
 						left: 25px;
-						top: 0;
+						top: 6px;
 						margin: 0;
 						background: #fff;
 						padding-right: 30px;
@@ -569,6 +569,43 @@
 				cursor: pointer;
 				transition: all 0.4s ease-in-out;
 
+				.label-nav {
+					opacity: 0;
+					position: absolute;
+					width: 200px;
+					top: -55px;
+					pointer-events: none;
+					transition: all 0.5s ease-in-out;
+
+					&::before {
+						content: "";
+						position: absolute;
+						left: 3px;
+						bottom: -28px;
+						width: 2px;
+						height: 22px;
+						max-height: 0;
+						background: #000;
+						transition: all 0.5s ease-in-out;
+					}
+
+					.label-nav-title,
+					.label-nav-type {
+						font-family: $mainFont;
+						display: block;
+					}
+
+					.label-nav-title {
+						font-size: 13px;
+						font-weight: 300;
+					}
+
+					.label-nav-type {
+						font-weight: 600;
+						font-size: 11px;
+					}
+				}
+
 				&:last-child {
 					margin: 0;
 				}
@@ -598,6 +635,16 @@
 					}
 				}
 
+				&:hover {
+					.label-nav {
+						opacity: 1;
+
+						&::before {
+							max-height: 22px;
+						}
+					}
+				}
+
 
 				// DOT COLORS
 				&.sncf {
@@ -607,6 +654,10 @@
 						&::before {
 							border: 1px solid $sncfMain;
 						}
+					}
+
+					.label-nav-title {
+						color: $sncfMain;
 					}
 				}
 
@@ -618,6 +669,10 @@
 							border: 1px solid $nookeMain;
 						}
 					}
+
+					.label-nav-title {
+						color: $nookeMain;
+					}
 				}
 
 				&.florilege {
@@ -627,6 +682,10 @@
 						&::before {
 							border: 1px solid $florilegeMain;
 						}
+					}
+
+					.label-nav-title {
+						color: $florilegeMain;
 					}
 				}
 			}

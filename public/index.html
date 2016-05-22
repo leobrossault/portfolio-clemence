@@ -60,15 +60,19 @@
 								</span>
 
 								<ul>
-									<li><a v-link="{path: '/', exact: true}">Projects</a></li>
-									<li><a v-link="{path: '/blog', exact: true}">Blog</a></li>
-									<li><a v-link="{path: '/about', exact: true}">About</a></li>
+									<li><a v-link="{path: '/', exact: true}" class="leave-page-click">Projects</a></li>
+									<li><a v-link="{path: '/blog', exact: true}" class="leave-page-click">Blog</a></li>
+									<li><a v-link="{path: '/about', exact: true}" class="leave-page-click">About</a></li>
 								</ul>
 							</div>
 						</div>
 			  </header>
 			  <!-- route outlet -->
 			  <router-view></router-view>
+
+				<div id="loader">
+					<p>loading ...</p>
+				</div>
 			</div>
 
 		<!-- Scripts -->

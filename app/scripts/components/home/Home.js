@@ -6,7 +6,7 @@ import Diaporama from './Diaporama';
 let Home = Vue.extend({
   data () {},
   components: {
-    'diaporama': Diaporama,
+    'diaporama': Diaporama
   },
   route: {
     activate () {
