@@ -55,14 +55,18 @@ let Blog = Vue.extend({
         }
       },
       activate () {
-        let menuBlog = document.querySelector('.open-menu li:nth-child(2) a');
+        let menuBlog = document.querySelector('.open-menu li:nth-child(2) a'),
+            header = document.querySelector('header');
         menuBlog.classList.add('active');
+        header.classList.remove('leave');
       },
       canDeactivate (transition) {
         let blog = document.querySelector('.blog-home'),
-            menuBlog = document.querySelector('.open-menu li:nth-child(2) a');
+            menuBlog = document.querySelector('.open-menu li:nth-child(2) a'),
+            header = document.querySelector('header');
         blog.classList.add('leave-blog');
         menuBlog.classList.remove('active');
+        header.classList.add('leave');
 
         setTimeout(transition.next, 800);
       }

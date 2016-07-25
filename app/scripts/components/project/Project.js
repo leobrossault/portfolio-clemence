@@ -13,13 +13,24 @@ let Project = Vue.extend({
       data (transition) {
         let name = transition.to.params.projectName;
         let Httpreq = new XMLHttpRequest(),
-            url = Const.urlSite + 'wordpress/wp-json/posts?filter[s]='+ name;
+            url = Const.urlSite + 'wordpress/wp-json/posts?filter[s]='+ name,
+            link;
 
         Httpreq.open('GET', url, false);
         Httpreq.send(null);
         this.project = JSON.parse(Httpreq.responseText)[0];
 
-        return {inProject: this.project}
+        link = false;
+
+        if (this.project.meta.next_project_url != '' && this.project.meta.next_project_url != undefined) {
+          let count = this.project.meta.next_project_url.split('/').length - 2;
+          link = this.project.meta.next_project_url.split('/')[count];
+        }
+
+        return {
+          inProject: this.project,
+          link: link
+        }
       }
     },
     ready () {

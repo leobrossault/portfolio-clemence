@@ -15,6 +15,8 @@ import Article from './components/blog/article/Article';
 Vue.use(VueRouter);
 Vue.use(VueMoment);
 Vue.use(VueResource);
+Vue.config.debug = false;
+Vue.config.silent = true;
 
 let App = Vue.extend({}),
     router = new VueRouter({

@@ -10,7 +10,7 @@ p, h1 { margin: 0; }
 #app { position: absolute; top: 0; left: 0; padding-top: 100px; }
 
 /* HEADER */
-#header { width: 100%; position: fixed; overflow: hidden; top: 0; left: 0; }
+#header { width: 100%; position: fixed; overflow: hidden; top: 0; left: 0; transform: translateY(0px); opacity: 1; transition: all 0.4s 0s ease-in-out; }
 
 #header .close-menu { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 15px 0; position: relative; z-index: 5; }
 
@@ -159,6 +159,8 @@ p, h1 { margin: 0; }
 #header .open-menu ul li:nth-child(3) a { transition: all 0.4s 0.6s ease-in-out; }
 
 #header .open-menu ul li:nth-child(4) a { transition: all 0.4s 0.8s ease-in-out; }
+
+#header.leave { transform: translateY(-100px); opacity: 0; transition: all 0s 0.5s; }
 
 #header.active .open-menu { opacity: 1; transform: translateY(0); transition: all 0.4s ease-in-out; }
 

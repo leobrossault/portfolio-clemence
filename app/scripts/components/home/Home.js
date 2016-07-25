@@ -10,14 +10,18 @@ let Home = Vue.extend({
   },
   route: {
     activate () {
-      let menuHome = document.querySelector('.open-menu li:first-child a');
+      let menuHome = document.querySelector('.open-menu li:first-child a'),
+          header = document.querySelector('header');
       menuHome.classList.add('active');
+      header.classList.remove('leave');
     },
     canDeactivate (transition) {
       let home = document.querySelector('.home'),
-          menuHome = document.querySelector('.open-menu li:first-child a');
+          menuHome = document.querySelector('.open-menu li:first-child a'),
+          header = document.querySelector('header');
       home.classList.add('leave-home');
       menuHome.classList.remove('active');
+      header.classList.add('leave');
 
       setTimeout(transition.next, 1200);
     }

@@ -21,14 +21,18 @@ let About = Vue.extend({
         return {about: this.aboutData}
       },
       activate: function () {
-        let menuAbout = document.querySelector('.open-menu li:nth-child(3) a');
+        let menuAbout = document.querySelector('.open-menu li:nth-child(3) a'),
+            header = document.querySelector('header');
         menuAbout.classList.add('active');
+        header.classList.remove('leave');
       },
       canDeactivate: function (transition) {
         let about = document.querySelector('.about'),
-            menuAbout = document.querySelector('.open-menu li:nth-child(3) a');
+            menuAbout = document.querySelector('.open-menu li:nth-child(3) a'),
+            header = document.querySelector('header');
         about.classList.add('leave-about');
         menuAbout.classList.remove('active');
+        header.classList.add('leave');
 
         setTimeout(transition.next, 1500);
       }

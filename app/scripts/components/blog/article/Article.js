@@ -32,14 +32,18 @@ let Article = Vue.extend({
       },
       activate () {
         scroll(0, 0);
-        let menuBlog = document.querySelector('.open-menu li:nth-child(2) a');
+        let menuBlog = document.querySelector('.open-menu li:nth-child(2) a'),
+            header = document.querySelector('header');
         menuBlog.classList.add('active');
+        header.classList.remove('leave');
       },
       canDeactivate (transition) {
         let article = document.querySelector('.article-home'),
-            menuBlog = document.querySelector('.open-menu li:nth-child(2) a');
+            menuBlog = document.querySelector('.open-menu li:nth-child(2) a'),
+            header = document.querySelector('header');
         article.classList.add('leave-article');
         menuBlog.classList.remove('active');
+        header.classList.add('leave');
 
         setTimeout(transition.next, 1500);
       }
